@@ -1,0 +1,51 @@
+%% ================================================================
+%%  SECTION 8 — Datasets
+%% ================================================================
+\section{Datasets}
+
+The availability and quality of annotated datasets has been the primary bottleneck in Indian legal NLP. Unlike Western legal AI, which benefits from decades of structured case law repositories such as LexisNexis and PACER, Indian legal NLP has had to construct its own benchmarks largely from scratch, frequently relying on manual annotation by legal professionals. The seven datasets surveyed in this section represent the field's principal resources as of 2025, and they vary substantially in size, court coverage, annotation type, and public availability.
+
+\begin{table*}[t]
+\centering
+\caption{Primary Datasets for Indian Legal NLP Research (2021--2025)}
+\label{tab:datasets}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.4cm} >{\centering\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}p{4.2cm} >{\centering\arraybackslash}p{1.2cm}}
+\toprule
+\textbf{Dataset} & \textbf{Reference} & \textbf{Size} & \textbf{Court Coverage} & \textbf{Annotation Type} & \textbf{Avail.} \\
+\midrule
+ILDC & \cite{malik-etal-2021-ildc} & 35,000 cases & Supreme Court of India & Binary outcome labels, multi-sentence explanations & Public \\
+\addlinespace
+PredEx & \cite{nigam-etal-2024-predex} & 15,000+ cases & Supreme Court of India & Expert-annotated natural language explanations aligned to outcomes & Public \\
+\addlinespace
+NyayaAnumana & \cite{nigam-etal-2025-nyayaanumana} & 700,000+ cases & Supreme Court, High Courts, District Courts & Outcome labels, court-level metadata & Public \\
+\addlinespace
+NyayaRAG Corpus & \cite{nigam-etal-2025-nyayarag} & Subset of Indian judgments & Supreme Court and High Courts & Retrieval-annotated with relevant precedent links & Partial \\
+\addlinespace
+LegalEval (SemEval-2023 Task 6) & \cite{modi-etal-2023-semeval} & 9,380 sent. (NER); 14,864 sent. (roles) & Supreme Court and High Courts & NER labels (14 types), rhetorical role labels, statute tags & Public \\
+\addlinespace
+InLegalBERT Corpus & \cite{paul-etal-2023-inlegalbert} & 5.4M sentences & Supreme Court and High Courts & Pre-training corpus, no task-specific labels & Partial \\
+\addlinespace
+Indian Kanoon & -- & Millions of documents & All court levels & No annotation, raw text only & Public \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The progression in dataset scale from ILDC's 35,000 cases to NyayaAnumana's 700,000 cases represents a step change that enables LLM-scale fine-tuning for the first time in the Indian legal context~\cite{nigam-etal-2025-nyayaanumana}. Scale alone, however, does not compensate for annotation depth. NyayaAnumana provides outcome labels and court-level metadata but lacks the expert-annotated natural language explanations that PredEx supplies at smaller scale~\cite{nigam-etal-2024-predex}. District court data remains severely underrepresented across all annotated datasets relative to the proportion of India's pending caseload that these courts handle in practice. The InLegalBERT corpus and Indian Kanoon provide raw text at large scale but contain no task-specific annotations, limiting their utility to pre-training and unsupervised analysis.
+
+Three annotation gaps persist that no existing dataset addresses. First, no dataset provides argument-level annotations that link claims, evidence, statutes, and precedents within a single judgment, which renders argument graph construction an unsupervised or weakly supervised problem by necessity. Second, no dataset covers multilingual judgments in which Hindi or regional language passages are embedded within English text, despite the prevalence of such code-mixing in Indian judicial documents. Third, no dataset provides counterfactual annotations of the kind required to train or evaluate a what-if analysis system. These three gaps correspond directly to the open research directions identified in Sections~V and~VII, and their resolution will require coordinated annotation efforts involving both NLP researchers and legal domain experts~\cite{modi-etal-2023-semeval}.
+
+%% ================================================================
+%%  SECTION 9 — Evaluation Metrics
+%% ================================================================
+\section{Evaluation Metrics}
+
+Evaluation methodology is as consequential as model architecture in legal AI research, yet it has received comparatively little critical attention. The choice of metric determines what a system is optimised for, and in a legal context, optimising for the wrong objective can produce systems that appear performant on benchmarks but fail systematically in deployment. The majority of legal AI studies rely on accuracy as their sole evaluation measure, a choice that is rarely justified and that masks systematic failure modes on minority outcome classes~\cite{medvedeva-etal-2020-echr}. This section surveys the metrics employed across the retrieval, classification, and generation tasks covered by this survey.
+
+\subsection{Retrieval Metrics}
+
+Mean Average Precision (MAP) is the standard metric for evaluating ranked retrieval, capturing both the precision of retrieved documents and the quality of their ranking order. MAP computes the average precision at each relevant document in the ranked list and then averages across queries, yielding a single score that reflects both recall and rank position. Normalised Discounted Cumulative Gain (nDCG) provides a complementary perspective by applying a logarithmic discount to documents at lower ranks, placing greater weight on highly ranked relevant results. This weighting reflects the behaviour of legal practitioners, who typically examine only the top results of a retrieval query. Both metrics require relevance judgments that are expensive to collect in legal domains, as the relevance of a prior case to a present dispute is a matter of legal interpretation rather than surface similarity. BM25 evaluation on legal case retrieval benchmarks~\cite{rosa-etal-2021-bm25} and dense retrieval experiments in the COLIEE competition~\cite{althammer-etal-2021-dossier} employ both MAP and nDCG as their primary evaluation measures.
+
+\subsection{Classification, Generation, and Explainability Metrics}
+
+For binary and multi-class outcome prediction, accuracy and macro-averaged F1 are the standard measures. Macro-F1 is preferable to accuracy when class distributions are imbalanced, a condition that is common in Indian legal datasets where one outcome class (typically dismissal) dominates. Relying solely on accuracy in such settings can produce misleadingly high scores, as a trivial majority-class classifier achieves high accuracy without learning any discriminative signal~\cite{medvedeva-etal-2020-echr}. For named entity recognition, per-entity-type F1 is the appropriate measure, since aggregate F1 can mask poor performance on rare but legally significant entity types such as witness names and provision numbers~\cite{kalamkar-etal-2022-ner}. For the evaluation of generated explanations, automated metrics such as ROUGE and BERTScore measure surface overlap with reference texts but cannot assess legal soundness. Expert Likert scale assessments, in which legal professionals rate the adequacy, accuracy, and completeness of generated explanations on a structured scale, currently represent the most reliable evaluation methodology. This approach has been employed in the evaluation of both INLegalLlama~\cite{nigam-etal-2025-nyayaanumana} and PredEx~\cite{nigam-etal-2024-predex}. Human evaluation of this kind is resource-intensive but remains the only dependable measure of whether a generated explanation is legally sound rather than merely fluent.
+

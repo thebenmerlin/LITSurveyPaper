@@ -1,0 +1,83 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{xcolor}
+\bibliographystyle{IEEEtran}
+
+\begin{document}
+
+\title{Towards Integrated AI-Assisted Legal Reasoning:\\A Survey of Indian Legal NLP Across Five Capability Axes}
+
+\author{
+\IEEEauthorblockN{Neeta Chavan, Mayur Rathod, Megh Yashwantkar, and Gajanan Barve}
+\IEEEauthorblockA{
+\textit{Department of Computer Science and Business Systems}\\
+\textit{JSPM's Rajarshi Shahu College of Engineering, Pune, Maharashtra, India}\\
+}
+}
+
+\maketitle
+
+\begin{abstract}
+India's judiciary faces a systemic crisis, with approximately fifty million cases pending across district courts, high courts, and the Supreme Court. Artificial intelligence offers a principled direction for augmenting judicial reasoning, yet existing legal AI tools remain fragmented: retrieval engines, prediction models, and explainability modules operate in isolation. This survey presents a structured review of Indian legal NLP organised along five capability axes: precedent search, case fact structuring, argument graph construction, judicial outcome simulation, and what-if analysis. For each axis, the survey catalogues representative methods, benchmark datasets, and evaluation practices. The central finding is that no existing system integrates all five capabilities into a unified pipeline. Argument graph construction and counterfactual what-if analysis remain virtually unexplored in the Indian legal context. These gaps underscore the need for future architectures that couple retrieval, structured reasoning, prediction, and interactive analysis within a single coherent framework.
+\end{abstract}
+
+%% ================================================================
+%%  SECTION 1 — Introduction
+%% ================================================================
+\section{Introduction}
+
+\IEEEPARstart{I}{ndia's} judicial system confronts a backlog of approximately fifty million pending cases distributed across its three-tier hierarchy of district courts, high courts, and the Supreme Court. This accumulation is not merely an administrative inconvenience; it constitutes a systemic failure of access to justice that administrative reform alone has proven insufficient to resolve. Litigants routinely wait years, sometimes decades, for resolution, eroding public confidence in the rule of law. Against this backdrop, AI-assisted legal tools represent a principled direction for augmenting, not replacing, judicial reasoning. The scale of digitised Indian legal data, including over one million Supreme Court and High Court judgments, provides a substantial empirical foundation for computational analysis~\cite{nigam-etal-2025-nyayaanumana}. These conditions make India a compelling yet underexplored testbed for legal AI research.
+
+Despite growing research interest, current legal AI systems remain fundamentally siloed. Retrieval systems that surface relevant precedents operate independently of prediction models that forecast case outcomes, which are in turn disconnected from interactive reasoning and explainability tools. This fragmentation stands in sharp contrast to how legal reasoning actually functions: judges do not retrieve precedents in isolation, then separately apply statutes, and finally reason over facts. Rather, judicial reasoning is an integrated process wherein established facts, applicable law, and prior rulings are considered simultaneously to arrive at a disposition. Recent work has demonstrated that coupling retrieval with downstream reasoning yields substantial improvements over pipeline approaches that treat these stages independently~\cite{nigam-etal-2025-nyayarag}, and that case-based reasoning can be effectively integrated with retrieval-augmented generation to produce more legally grounded responses~\cite{wiratunga-etal-2024-cbrrag}. These findings reinforce the imperative for tighter integration across capability boundaries.
+
+This paper presents a survey, not a system. Its contribution is twofold: first, a structured review of five capability areas in Indian legal NLP, and second, the identification of the absence of an integrated multi-capability pipeline as the field's central open problem. The five capability axes that organise this review are: (1)~precedent search, encompassing sparse and dense retrieval of relevant prior judgments; (2)~case fact structuring, covering named entity recognition, rhetorical role labelling, and statutory section tagging; (3)~argument graph construction, involving the extraction of claims, evidence, and their relational structure; (4)~judicial outcome simulation, addressing prediction of dispositions with accompanying explanations; and (5)~what-if analysis, enabling counterfactual hypothesis testing over case facts. Together, these axes span the reasoning chain from information retrieval to interactive deliberation.
+
+The remainder of this paper is organised as follows. Section~II provides background on the Indian legal ecosystem and the specific challenges it poses for NLP. Sections~III through VII review each of the five capability axes in turn. Section~VIII presents a comparative analysis across axes, identifying integration gaps and cross-cutting themes. Section~IX discusses evaluation methodologies and metrics. Section~X outlines open problems and future research directions. Section~XI concludes the survey.
+
+\begin{table*}[t]
+\centering
+\caption{Five Capability Axes in Indian Legal AI: Coverage and Identified Gaps}
+\label{tab:axes}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}p{6.8cm} >{\raggedright\arraybackslash}p{6.8cm}}
+\toprule
+\textbf{Capability Axis} & \textbf{Description} & \textbf{Gap in Existing Literature} \\
+\midrule
+Precedent Search &
+Semantic retrieval of relevant prior judgments through sparse keyword-based methods, dense vector representations, and hybrid strategies applied to Indian case law corpora. &
+Retrieval systems function as standalone components; their outputs are not consumed by downstream prediction or reasoning modules, limiting their utility in end-to-end legal analysis. \\
+\addlinespace
+Case Fact Structuring &
+Extraction and classification of structured elements from judgment text, including named entity recognition, rhetorical role labelling of sentence-level functional segments, and Indian Penal Code section tagging. &
+Structured representations produced by these models are not propagated to any subsequent reasoning stage, rendering them terminal outputs rather than intermediate features in a larger pipeline. \\
+\addlinespace
+Argument Graph Construction &
+Identification and relational mapping of argumentative components, including claims, supporting evidence, cited statutes, and invoked precedents, into directed graph representations that capture the logical structure of judicial reasoning. &
+This capability is virtually absent in Indian legal AI research; existing work on legal argument mining is confined almost exclusively to Western jurisdictions such as the European Court of Human Rights. \\
+\addlinespace
+Judicial Outcome Simulation &
+Prediction of case dispositions (acceptance or dismissal) accompanied by natural language explanations that articulate the reasoning underlying the predicted outcome. &
+Prediction models operate without access to retrieval-augmented context; generated explanations remain shallow and lack grounding in specific precedents or statutory provisions. \\
+\addlinespace
+What-If Analysis &
+Counterfactual hypothesis testing that enables users to perturb specific case facts, statutory provisions, or precedent selections and observe the resulting shifts in predicted outcomes and explanatory rationales. &
+Entirely unexplored in Indian legal NLP; no existing dataset, model, or evaluation framework addresses counterfactual reasoning over Indian case law. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+%% ================================================================
+%%  SECTION 2 — Background: The Indian Legal Ecosystem
+%% ================================================================
+\section{Background: The Indian Legal Ecosystem}
+
+India's legal system operates within the common law tradition inherited from British colonial jurisprudence, wherein judicial decisions carry precedential authority. Judicial reasoning in this framework rests on three interdependent pillars: established facts of the case, applicable statutory provisions, drawn primarily from codified instruments such as the Indian Penal Code and the Code of Civil Procedure, and binding precedents invoked through the doctrine of stare decisis. These pillars are not consulted sequentially or in isolation. A judgment emerges from their simultaneous interaction: a court assesses the facts in light of the relevant statutes, interprets those statutes in the context of authoritative prior rulings, and determines whether the factual matrix of the present case falls within the scope of established precedent. Any computational framework that aspires to model legal reasoning must therefore represent and reason over all three pillars concurrently.
+
+Indian legal NLP presents distinct challenges that differentiate it from better-resourced Western legal domains. First, Indian court judgments are frequently multilingual: a single document may interleave English with Hindi, Urdu, or regional languages without explicit demarcation or translation, complicating tokenisation and representation learning. Second, there is no standardised formatting convention across Indian courts or time periods; judgments from different benches, courts, and decades exhibit wide variation in structure, citation style, and rhetorical organisation, impeding rule-based and template-driven extraction methods. Third, the availability of high-quality annotated data remains limited relative to established benchmarks in Western jurisdictions such as the European Court of Human Rights or United States federal case law. The LegalEval shared task highlighted the difficulty of constructing consistent annotations for Indian legal text, revealing substantial inter-annotator disagreement on tasks such as rhetorical role labelling~\cite{modi-etal-2023-semeval}. Domain-adapted language models such as InLegalBERT have demonstrated that general-purpose pre-trained representations transfer poorly to this domain, necessitating targeted pre-training on Indian legal corpora~\cite{paul-etal-2023-inlegalbert}.
+
+Despite these challenges, Indian legal NLP has undergone rapid growth in recent years, catalysed by the creation of several large-scale datasets. The Indian Legal Documents Corpus (ILDC) introduced a benchmark of over thirty-five thousand Supreme Court cases annotated for judgment prediction and explanation~\cite{malik-etal-2021-ildc}. PredEx extended this line of work by providing expert-annotated explanations grounded in specific textual spans of the judgment~\cite{nigam-etal-2024-predex}. Most recently, NyayaAnumana established the largest Indian legal judgment prediction corpus to date, spanning multiple court levels and accompanied by a domain-specialised language model~\cite{nigam-etal-2025-nyayaanumana}. These resources have enabled measurable progress on individual tasks such as binary judgment prediction and rhetorical role classification. However, no existing work has unified these capabilities under a coherent multi-capability architecture. Each dataset and model addresses a single axis in isolation, leaving the integration of retrieval, structuring, reasoning, prediction, and interactive analysis as the field's principal unresolved challenge. This gap motivates the five-axis taxonomy that structures the remainder of this survey.
+
