@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  1 APR 2026 10:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  1 APR 2026 10:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -454,14 +454,14 @@ Package hyperref Info: Link coloring OFF on input line 11.
 \@outlinefile=\write3
 \openout3 = `survey_main.out'.
 
-
-** WARNING: \IEEEPARstart is locked out when in conference mode (line 34).
-LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
+ (./bundle1.tex
+** WARNING: \IEEEPARstart is locked out when in conference mode (line 10).
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -470,15 +470,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 /local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
-]
+]) (./bundle2.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-[3] [4] [5] [6] [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-(./survey_main.bbl)
+[3]) (./bundle3.tex [4] [5]) (./bundle4.tex) (./bundle5.tex [6] [7])
+(./survey_main.bbl [8])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -490,30 +487,32 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[9] (./survey_main.aux)
+[9
+
+] (./survey_main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `survey_main.out' has not changed.
-(rerunfilecheck)             Checksum: D42BDF4196CE7B654AE8B865B830D731;6687.
+(rerunfilecheck)             Checksum: B9BA87C6E42D5EA15C3810A75D9314F5;6439.
  ) 
 Here is how much of TeX's memory you used:
- 11267 strings out of 467525
- 174469 string characters out of 5418983
- 615956 words of memory out of 5000000
- 39983 multiletter control sequences out of 15000+600000
+ 11305 strings out of 467525
+ 175044 string characters out of 5418983
+ 615904 words of memory out of 5000000
+ 40007 multiletter control sequences out of 15000+600000
  664800 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1511b,446s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1282b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/lo
 cal/texlive/2026/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texli
 ve/2026/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on survey_main.pdf (9 pages, 112046 bytes).
+Output written on survey_main.pdf (9 pages, 110233 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 299 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
+ 307 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

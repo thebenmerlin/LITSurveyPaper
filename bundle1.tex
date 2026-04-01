@@ -1,27 +1,3 @@
-\documentclass[conference]{IEEEtran}
-\usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{array}
-\usepackage{xcolor}
-\bibliographystyle{IEEEtran}
-
-\begin{document}
-
-\title{Towards Integrated AI-Assisted Legal Reasoning:\\A Survey of Indian Legal NLP Across Five Capability Axes}
-
-\author{
-\IEEEauthorblockN{Neeta Chavan, Mayur Rathod, Megh Yashwantkar, and Gajanan Barve}
-\IEEEauthorblockA{
-\textit{Department of Computer Science and Business Systems}\\
-\textit{JSPM's Rajarshi Shahu College of Engineering, Pune, Maharashtra, India}\\
-}
-}
-
-\maketitle
-
 \begin{abstract}
 Close to fifty million cases sit unresolved across India's three-tier court hierarchy. That number alone makes a strong case for computational intervention, yet the legal AI tools available today are built in silos---retrieval engines that know nothing about prediction models, prediction models that ignore explainability, and explainability modules that never feed back into retrieval. We survey Indian legal NLP through five capability axes: precedent search, case fact structuring, argument graph construction, judicial outcome simulation, and what-if analysis. For each axis we catalogue representative methods, benchmark datasets, and evaluation practices. Our principal observation is blunt: no existing system ties all five axes together. Argument graph construction and counterfactual what-if reasoning are, for practical purposes, absent from the Indian legal AI landscape. We argue that progress on individual axes has reached a point of diminishing returns without a unifying pipeline that couples retrieval, structured reasoning, prediction, and interactive analysis.
 \end{abstract}
@@ -77,7 +53,6 @@ Entirely unexplored in Indian legal NLP; no existing dataset, model, or evaluati
 
 India inherited its common law tradition from British colonial rule, and that inheritance carries real weight: judicial decisions are precedent, not merely advisory. Judicial reasoning here rests on three pillars that a court must hold in mind at once---the established facts, the applicable statutes (principally the Indian Penal Code and the Code of Civil Procedure), and binding prior rulings invoked through stare decisis. No competent judge consults these sequentially. A judgment forms at the intersection of all three: facts are read through the lens of statute, statutes are interpreted in light of prior rulings, and prior rulings are tested against the factual matrix of the case at hand. We contend that any computational framework that treats these pillars as independent inputs to a staged pipeline has already compromised its fidelity to how law actually works.
 
-Processing Indian legal text introduces a set of headaches that researchers working on ECHR or U.S. federal case law rarely encounter. The most obvious is multilingualism. A single judgment may drift between English, Hindi, Urdu, and a regional language mid-paragraph, with no markup or translation cues---a nightmare for tokenisers trained on monolingual corpora. Formatting is another pain point. There is no standard template across Indian courts; judgments from different benches, different decades, and different levels of the hierarchy vary wildly in structure, citation conventions, and rhetorical organisation. Rule-based extraction breaks almost immediately. And then there is annotation scarcity. The LegalEval shared task laid this bare: even trained annotators disagreed substantially on rhetorical role labels for Indian legal text~\cite{modi-etal-2023-semeval}. General-purpose encoders like base BERT are not up to the task either. InLegalBERT showed that domain-adapted pre-training on Indian corpora is essentially non-negotiable for competitive performance~\cite{paul-etal-2023-inlegalbert}. We suspect the community still underestimates how much domain shift matters in this setting.
+\IEEEPARstart{P}{rocessing} Indian legal text introduces a set of headaches that researchers working on ECHR or U.S. federal case law rarely encounter. The most obvious is multilingualism. A single judgment may drift between English, Hindi, Urdu, and a regional language mid-paragraph, with no markup or translation cues---a nightmare for tokenisers trained on monolingual corpora. Formatting is another pain point. There is no standard template across Indian courts; judgments from different benches, different decades, and different levels of the hierarchy vary wildly in structure, citation conventions, and rhetorical organisation. Rule-based extraction breaks almost immediately. And then there is annotation scarcity. The LegalEval shared task laid this bare: even trained annotators disagreed substantially on rhetorical role labels for Indian legal text~\cite{modi-etal-2023-semeval}. General-purpose encoders like base BERT are not up to the task either. InLegalBERT showed that domain-adapted pre-training on Indian corpora is essentially non-negotiable for competitive performance~\cite{paul-etal-2023-inlegalbert}. We suspect the community still underestimates how much domain shift matters in this setting.
 
 The good news is that resource creation has accelerated sharply. ILDC gave the community its first large-scale benchmark---over thirty-five thousand Supreme Court cases annotated for judgment prediction and explanation~\cite{malik-etal-2021-ildc}. PredEx raised the bar by providing expert-annotated explanations tied to specific textual spans within judgments~\cite{nigam-etal-2024-predex}. NyayaAnumana, the most recent and largest corpus, spans multiple court levels and ships with its own domain-specialised language model~\cite{nigam-etal-2025-nyayaanumana}. These datasets have driven measurable gains on tasks like binary judgment prediction and rhetorical role classification. But here is the catch. Every one of them targets a single capability axis in isolation. No existing work unifies retrieval, structuring, reasoning, prediction, and interactive analysis under one coherent architecture. That gap---the absence of integration---is what motivates the five-axis taxonomy we develop in the sections that follow.
-

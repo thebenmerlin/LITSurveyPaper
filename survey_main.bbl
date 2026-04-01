@@ -155,15 +155,9 @@ S.~K. Nigam, B.~D. Patnaik, S.~Mishra, N.~Shallum, K.~Ghosh, and
   \url{https://arxiv.org/abs/2410.10542}
 \BIBentrySTDinterwordspacing
 
-\bibitem{chalkidis-etal-2020-legalbert}
-\BIBentryALTinterwordspacing
-I.~Chalkidis, M.~Fergadiotis, P.~Malakasiotis, N.~Aletras, and
-  I.~Androutsopoulos, ``{LEGAL-BERT}: The muppets straight out of law school,''
-  in \emph{Findings of the Association for Computational Linguistics: EMNLP
-  2020}.\hskip 1em plus 0.5em minus 0.4em\relax Online: Association for
-  Computational Linguistics, 2020, pp. 2898--2904. [Online]. Available:
-  \url{https://aclanthology.org/2020.findings-emnlp.261/}
-\BIBentrySTDinterwordspacing
+\bibitem{deakin-etal-2023-xai-law}
+S.~Deakin and S.~Markou, ``Explainable {AI} and law: An evidential survey,''
+  \emph{Digital Society}, vol.~2, no.~2, p.~27, 2023.
 
 \bibitem{medvedeva-etal-2020-echr}
 M.~Medvedeva, M.~Vols, and M.~Wieling, ``Using machine learning to predict
@@ -178,9 +172,5 @@ M.~Mersha, S.~Sprunger, T.~R. Hoens, R.~Nwali, D.~Aidoo, T.~Pham, and
   arXiv:2409.00265}, 2024. [Online]. Available:
   \url{https://arxiv.org/abs/2409.00265}
 \BIBentrySTDinterwordspacing
-
-\bibitem{deakin-etal-2023-xai-law}
-S.~Deakin and S.~Markou, ``Explainable {AI} and law: An evidential survey,''
-  \emph{Digital Society}, vol.~2, no.~2, p.~27, 2023.
 
 \end{thebibliography}
