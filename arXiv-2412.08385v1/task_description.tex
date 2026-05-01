@@ -1,0 +1,10 @@
+\section{Task Description}
+Our research focuses on advancing the Legal Judgment Prediction (LJP) task, which encompasses two primary components: Prediction and Explanation. These components are executed sequentially to address the crucial needs of predicting legal judgments and providing justifications for these predictions. Figure \ref{fig:task-framework} in the Appendix provides a visual overview of the LJP framework utilized in our study.
+
+\noindent
+%
+\textbf{Prediction Task:} The LJP task's core objective is to predict a legal case's outcome based on the case proceedings. Unlike previous studies primarily focusing on binary classification (acceptance or rejection), our study also classifies cases with partially accepted outcomes. Given a document \(D\), the task is to predict the decision \(y \in \{0, 1, 2\}\), where `0' denotes the rejection of all appeals by the appellant, `1' represents the acceptance of all appeals, and `2' indicates partial acceptance of the appeals.
+
+\noindent
+%
+\textbf{Explanation Task:} The second component of the LJP task involves explaining the model's predicted decision. To address the need for explainability, we developed \texttt{\namel}, a generative LLM. Initially, the model was trained on case text to incorporate legal knowledge. Following this, we fine-tuned the model in a supervised manner to enhance its capabilities in both prediction and explanation, thereby increasing the reliability and usefulness of AI in legal decision-making.

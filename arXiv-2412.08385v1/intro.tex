@@ -1,0 +1,108 @@
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Comparison with Old datasets  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[t]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|l|c|c|r|r|l|}
+\hline
+\textbf{Corpus} &
+  \textbf{Language} &
+  \textbf{Jurisdiction} &
+  \textbf{\# of Cases} &
+  \begin{tabular}[c]{@{}c@{}}\textbf{Avg \# of} \\ \textbf{Tokens}\end{tabular} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}\# of labels w.r.t Subtask\end{tabular}}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}FCCR \cite{csulea2017exploring}\end{tabular} &
+  French &
+  France &
+  1,26,865 &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Court Decision(6 \& 8)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}CAIL \cite{xiao2018cail2018}\end{tabular} &
+  Chinese &
+  China &
+  26,76,075 &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Law Article (183)\\ Charge (202)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}ECHR \cite{chalkidis2019neural}\end{tabular} &
+  English &
+  Europe &
+  11,478 &
+  2,421 &
+  \begin{tabular}[c]{@{}l@{}}Violation (2) \\ Law Article (66)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}ECHR \cite{chalkidis-etal-2021-paragraph}\end{tabular} &
+  English &
+  Europe &
+  11,000 &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Alleged Law Article (40)\\ Violation (2)\\ Law Article (40)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}SJP \cite{niklaus2021swiss}\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}German\\ French\\ Italian\end{tabular} &
+  Switzerland &
+  \begin{tabular}[c]{@{}c@{}}49,883 \\ 31,094 \\ 4,292 \end{tabular} &
+  850 &
+  Court Decision (2) \\ \hline
+\begin{tabular}[c]{@{}c@{}}ILDC \cite{malik-etal-2021-ildc}\end{tabular} &
+  English &
+  India &
+  34,816 &
+  3,231 &
+  Court Decision (2) \\ \hline
+\begin{tabular}[c]{@{}c@{}}HLDC \cite{kapoor-etal-2022-hldc}\end{tabular} &
+  Hindi &
+  India &
+  3,40,280 &
+  764 &
+  Bail Prediction (2) \\ \hline
+\begin{tabular}[c]{@{}c@{}}BCD \cite{lage2022predicting}\end{tabular} &
+  Portuguese &
+  Brazil &
+  4,043 &
+  119 &
+  \begin{tabular}[c]{@{}l@{}}Court Decision (3)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}PredEx \cite{nigam2024legaljudgmentreimaginedpredex} \end{tabular} &
+  English &
+  India &
+  15,222 &
+  4,504 &
+  \begin{tabular}[c]{@{}l@{}}Court Decision (2)\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textbf{(Our dataset)} \textbf{\texttt{\named}}\end{tabular} &
+  English &
+  India &
+  7,02,945 &
+  2,061 &
+  \begin{tabular}[c]{@{}l@{}}Court Decision (2 \& 3)\end{tabular} \\ \hline
+\end{tabular}%
+}
+\caption{Comparative overview of widely used legal judgment prediction datasets. Entries marked with `-' denote unknown or unavailable information.}
+\label{tab:old-data-stat}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The integration of artificial intelligence (AI) in legal judgment prediction (LJP) has the potential to revolutionize the legal landscape, offering both challenges and opportunities. In India, where the legal system faces a significant backlog of lakhs of pending cases, the application of AI in LJP can be crucial for enhancing efficiency and accessibility. However, the complexity and diversity of legal cases present significant challenges in developing effective AI models. To address these challenges, we introduce \textbf{\texttt{\named}}, the largest and most diverse corpus of Indian legal cases compiled for LJP, covering various levels of the judiciary. The name ``NyayaAnumana'' is formed by a combination of the words
+``Nyaya'' and ``Anumana'' that mean ``judgment''
+and ``inference'' respectively for most major Indian languages. This name reflects the core focus of the dataset on legal judgments and their corresponding predictions, emphasizing its role in facilitating AI-driven insights within the legal domain. Our corpus stands out when compared to other popular corpora used in legal judgment prediction, surpassing them in terms of the number of cases, diversity of court levels, and comprehensive coverage of Indian legal proceedings, as shown in Table~\ref{tab:old-data-stat}. This richness and variety offer a unique opportunity to explore and predict legal judgments more accurately and nuanced than ever before. 
+% Table~\ref{tab:old-data-stat} provides a comparative overview of \texttt{\named} with other notable datasets.
+
+We develop \textbf{\texttt{\namel}}, a domain-specific generative large language model, tailored to the intricacies of the Indian legal domain. It is trained to enhance the accuracy of predictions of legal judgments and provide understandable explanations for these decisions. This dual approach caters to the needs of legal experts who seek not just accuracy but also rationale in AI-assisted decisions.
+
+Our work is distinguished by several key contributions that mark significant advancements in the field of legal AI:
+%
+\begin{enumerate}
+%
+\item \emph{Largest Indian Legal Corpus for Judgment Prediction:} We introduce \texttt{\named}, the most extensive legal corpus in India for LJP, encompassing a wide range of courts and orders, ensuring diversity and comprehensive coverage in the dataset.
+%
+\item \emph{Generative Model for Prediction and Explanation:} Addressing the crucial need for explainability, we develop \texttt{\namel}, a generative LLM that not only predicts outcomes but also provides comprehensible explanations, enhancing the trustworthiness and utility of AI in legal decision-making.
+%
+\item \emph{Domain-Specific Transformer-Based Classifiers:} We fine-tuned several transformer-based models on \texttt{\named} to enhance prediction accuracy for the Indian legal domain. This includes testing model performance across different courts and hierarchical data to evaluate the impact of data inclusion.
+%
+\item \emph{Evaluation on Temporal Data:} We tested the model performance on temporal data, assessing its effectiveness on future or unseen data to ensure robustness and generalization capabilities over time.
+%
+\item \emph{Expert Evaluation and Validation:} We conducted a thorough evaluation using a Likert score scale to assess the effectiveness of our system. This evaluation utilized the PredEx test dataset \cite{nigam2024legaljudgmentreimaginedpredex} and ILDC\_expert \cite{malik-etal-2021-ildc}, offering crucial insights into how our AI models perform compared to human expert benchmarks.
+%
+\end{enumerate}
+
+Our research aspires to deliver a sophisticated AI-driven system for legal judgment prediction and explanation, specifically designed for the Indian judicial system. This initiative not only represents a technological leap but also aims to tackle the critical issue of case backlog in India. We anticipate that our work will enhance the efficiency and transparency of the legal process and stimulate further research and development in the realm of AI-assisted legal technologies. 
+For the sake of reproducibility, we have made the \texttt{\named} dataset and the code for our prediction and explanation models accessible via a GitHub link\footnote{\href{https://github.com/ShubhamKumarNigam/NyayaAnumana-and-INLegalLlama}{GitHub NyayaAnumana-and-INLegalLlama}}. 
+% Additionally, for convenience, we have uploaded the data\footnote{\href{https://huggingface.co/collections/L-NLProc/nyayaanumana-and-inlegalllama-dataset-67558fa9405ec5d08a891a9a}{HuggingFace NyayaAnumana Data}} and models\footnote{\href{https://huggingface.co/collections/L-NLProc/nyayaanumana-and-inlegalllama-models-6755809db3826df8fd96d570}{HuggingFace INLegalLlama Models}} to Huggingface.

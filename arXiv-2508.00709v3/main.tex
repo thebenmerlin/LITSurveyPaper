@@ -1,0 +1,106 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[final]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{url}
+% \usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{adjustbox}
+\usepackage{tcolorbox}
+\usepackage{booktabs} % For better-looking tables
+\usepackage{amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{xspace}
+
+\floatsep 10pt plus 2pt minus 2pt
+\textfloatsep 12pt plus 2pt minus 2pt
+\intextsep 10pt plus 2pt minus 2pt
+\dblfloatsep 10pt plus 2pt minus 2pt
+\dbltextfloatsep 10pt plus 2pt minus 2pt
+
+\setlist{leftmargin=*,nosep}
+
+\newcommand{\ab}[1]{\textcolor{red}{Arnab: #1}}
+\newcommand{\sknigam}[1]{\textcolor{red}{Shubham: #1}}
+
+\title{NyayaRAG: Realistic Legal Judgment Prediction with RAG under the Indian Common Law System}
+
+\author{Shubham Kumar Nigam$^{1,5*\dagger}$ \hskip2mm Balaramamahanthi Deepak Patnaik$^{1*}$ \hskip2mm Shivam Mishra$^{1*}$\\ 
+\textbf{Ajay Varghese Thomas}$^{2*}$ \hskip2mm \textbf{Noel Shallum}$^{3}$ \hskip2mm \textbf{Kripabandhu Ghosh}$^{4}$ \hskip2mm \textbf{Arnab Bhattacharya}$^{1}$\\
+$^{1}$Indian Institute of Technology Kanpur, India \quad
+$^{2}$SRM Institute of Science and Technology, India \\
+$^{3}$Symbiosis Law School Pune, India \quad
+$^{4}$IISER Kolkata, India \\
+$^{5}$University of Birmingham, Dubai, United Arab Emirates\\
+\texttt{\{shubhamkumarnigam, bdeepakpatnaik2002, shivam1602m,}\\
+\texttt{ajaythomas.work, noelshallum\}@gmail.com} \\ 
+\quad \texttt{kripaghosh@iiserkol.ac.in} \quad \texttt{arnabb@cse.iitk.ac.in}
+}%author
+
+\newcommand{\named}{NyayaAnumana\xspace}
+\newcommand{\namel}{INLegalLlama\xspace}
+
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+{
+\renewcommand{\thefootnote}{$*$}
+\footnotetext{These authors contributed equally to this work}
+\renewcommand{\thefootnote}{$\dagger$}
+\footnotetext{Corresponding author}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+}
+
+\input{abstract}
+
+\input{intro}
+
+\input{related_work}
+
+\input{task_description}
+
+\input{dataset}
+
+\input{methodology}
+
+\input{evaluation_metrics}
+
+\input{results_and_analysis}
+
+\input{Ablation_study}
+
+\input{conculsion}
+
+\input{acknowledgement}
+
+\input{limitation}
+
+\input{ethics}
+\newpage
+\bibliography{anthology, custom, sknigam, legal_bib}
+
+
+\newpage
+\appendix
+\input{appendix}
+
+\end{document}

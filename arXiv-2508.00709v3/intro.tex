@@ -1,0 +1,26 @@
+\section{Introduction}
+The application of artificial intelligence (AI) in legal judgment prediction (LJP) has the potential to transform legal systems by improving efficiency, transparency, and access to justice. This is particularly crucial for India, where millions of cases remain pending in courts, and decision-making is inherently dependent on factual narratives, statutory interpretation, and judicial precedents. India follows a common law system, where prior decisions (precedents) and statutory provisions play a central role in influencing legal outcomes. However, most existing AI-based LJP systems do not adequately replicate this fundamental feature of judicial reasoning.
+
+Previous studies \citep{malik-etal-2021-ildc, nigam-etal-2024-legal, nigam-etal-2025-nyayaanumana} have focused on predicting legal outcomes using the current case document, including sections like facts, arguments, issues, reasoning, and decision. More recent efforts have narrowed the scope to factual inputs alone \citep{nigam-etal-2024-rethinking, FactLegalLlama}; yet these systems still operate in a setting that is not real, and does not consider how courts naturally rely on applicable laws and prior rulings. In reality, judges rarely decide in isolation; instead, they actively refer to relevant precedents and statutory laws. To bridge this gap, we propose a framework that more closely mirrors actual courtroom conditions by explicitly incorporating external legal knowledge during inference.
+
+In critical domains like law, medicine and finance, decisions must be grounded in verifiable information. Experts in these domains cannot rely on opaque, black-box inferences and require systems that ensure factual consistency. Hallucinations, common in large generative models, can have severe consequences in legal decision-making. By retrieving and conditioning model responses on grounded sources such as applicable laws and precedent cases, the Retrieval-Augmented Generation (RAG) paradigm offers a principled approach to mitigate hallucination and promote trustworthy outputs. Furthermore, RAG frameworks like ours can be flexibly integrated into existing legal systems without requiring the retraining of core models or the sharing of private or sensitive case data. This enhances user trust while allowing the legal community to benefit from AI without sacrificing transparency or data confidentiality.
+
+Motivated by the above, we introduce \textbf{\texttt{NyayaRAG}}, a Retrieval-Augmented Generation (RAG) framework for realistic legal judgment prediction and explanation in the Indian common law system. The term ``NyayaRAG'' is derived from two components: ``\textbf{Nyaya}'' meaning ``justice'' and ``\textbf{RAG}'' referring to ``Retrieval-Augmented Generation''. Together, the name reflects our vision to build a justice-aware generation system that emulates the reasoning process followed by Indian courts, using facts, statutes, and precedents.
+
+Unlike prior models that operate purely on internal case content, \texttt{NyayaRAG} simulates real-world judicial decision-making by providing the model with:
+(i)~the \emph{summarized factual background} of the current case,
+(ii)~\emph{relevant statutory provisions}, and (iii)~retrieved top-k \emph{semantically similar previous judgments}. This structure emulates how judges deliberate on new cases, consulting both textual statutes and prior judicial opinions. Through this design, we evaluate how RAG can help reduce hallucinations, promote faithfulness, and yield legally coherent predictions and explanations.
+
+Our contributions in this paper are as follows:
+\begin{enumerate}
+    \item \emph{A Realistic RAG Framework for Indian Courts:} We present \texttt{NyayaRAG}, a novel framework that emulates Indian common law decision-making by incorporating not only facts but also retrieved legal statutes and precedents.
+    
+    \item \emph{Retrieval-Augmented Pipelines with Structured Inputs:} We construct modular pipelines representing different combinations of factual, statutory, and precedent-based inputs to understand their individual and combined contributions to model performance.
+
+    % \item \emph{Evaluation via Standard and LLM-Based Metrics:} We use a suite of lexical (ROUGE, BLEU), semantic (BERTScore, BLANC), and judgmental (G-Eval) metrics to evaluate explanation quality, along with standard accuracy-based metrics for binary and multi-label outcome prediction.
+
+    \item \emph{Simulating Common Law Reasoning with LLMs:} We show that LLMs guided by RAG and factual grounding can produce legally faithful explanations that are aligned with how real-world decisions are made under common law systems.
+\end{enumerate}
+
+Our work moves beyond fact-only or self-contained models by replicating a more faithful legal reasoning pipeline aligned with Indian jurisprudence. We hope that \texttt{NyayaRAG} opens new directions for building interpretable, retrieval-aware AI systems in legal settings, particularly in resource-constrained yet precedent-driven judicial systems like India's. We have shared our dataset, code, and RAG-based pipeline through a GitHub repository\footnote{\href{https://github.com/ShubhamKumarNigam/NyayaRAG}{https://github.com/ShubhamKumarNigam/NyayaRAG}}. 
+

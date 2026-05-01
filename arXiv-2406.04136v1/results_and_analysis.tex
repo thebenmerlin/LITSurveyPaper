@@ -1,0 +1,412 @@
+\section{Results and Analysis}
+
+\subsection{Judgment Prediction}
+Our experiments, as detailed in Table \ref{prediction-table}, reveal interesting insights into the performance of various models on the PredEx test data. Notably, Roberta emerges as the top performer, outstripping even the Large Language Models (LLMs). This suggests that traditional language models might be more adept at analyzing and predicting outcomes in legal documents compared to generative-based models. Even among the generative models, the few-shot Llama-2-7B model surpassed the fine-tuned Zephyr model, which is surprising given Zephyr's supervised fine-tuning (SFT) approach and its reinforcement learning training on general corpora. It appears that the Llama-2-7B models, both instruction-tuned for prediction and prediction with explanation tasks, show promising results in this domain.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Judgement prediction results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|
+>{}c |lc
+>{}c c
+>{}c |}
+\hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{1}{l|}{\textbf{Models}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Macro \\ Precision\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Macro \\ Recall\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Macro \\ F1\end{tabular}}} &
+  \textbf{Accuracy} \\ \hline
+\multicolumn{1}{|l|}{}& 
+  \multicolumn{5}{c|}{\textbf{Prediction only}} \\ \hline
+ &
+  \multicolumn{1}{l|}{InLegalBert} &
+  \multicolumn{1}{c|}{0.7546} &
+  \multicolumn{1}{c|}{0.7526} &
+  \multicolumn{1}{c|}{0.7536} &
+  0.7526 \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{InCaseLaw} &
+  \multicolumn{1}{c|}{0.7421} &
+  \multicolumn{1}{c|}{0.7395} &
+  \multicolumn{1}{c|}{0.7408} &
+  0.7395 \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{XLNet Large} &
+  \multicolumn{1}{c|}{0.7736} &
+  \multicolumn{1}{c|}{0.7707} &
+  \multicolumn{1}{c|}{0.7722} &
+  0.7707 \\ \cline{2-6} 
+\multirow{-4}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}LM\\ Based\end{tabular}}} &
+  \multicolumn{1}{l|}{RoBerta Large} &
+  \multicolumn{1}{c|}{\textbf{0.7831}} &
+  \multicolumn{1}{c|}{\textbf{0.7822}} &
+  \multicolumn{1}{c|}{\textbf{0.7827}} &
+  \textbf{0.7822} \\ \hline
+ &
+  \multicolumn{1}{l|}{Zephyr} &
+  \multicolumn{1}{c|}{{ 0.5347}} &
+  \multicolumn{1}{c|}{{ 0.5295}} &
+  \multicolumn{1}{c|}{{ 0.5119}} &
+  { 0.5309} \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{Gemini pro} &
+  \multicolumn{1}{c|}{{ \textbf{0.5976}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5803}}} &
+  \multicolumn{1}{c|}{{ 0.5610}} &
+  { \textbf{0.5808}} \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{Llama-2-7B} &
+  \multicolumn{1}{c|}{{ 0.5732}} &
+  \multicolumn{1}{c|}{{ 0.5723}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5713}}} &
+  { 0.5726} \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction task\end{tabular}} &
+  \multicolumn{1}{c|}{{ 0.5186}} &
+  \multicolumn{1}{c|}{{ 0.5177}} &
+  \multicolumn{1}{c|}{{ 0.5117}} &
+  { 0.5177} \\ \cline{2-6} 
+\multirow{-5}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}LLM \\ Based\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular}} &
+  \multicolumn{1}{c|}{{ 0.5195}} &
+  \multicolumn{1}{c|}{{ 0.5185}} &
+  \multicolumn{1}{c|}{{ 0.5127}} &
+  { 0.5190} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{5}{c|}{\textbf{Prediction with explanation on PredEx}} \\ \hline
+ &
+  \multicolumn{1}{l|}{Gemini pro} &
+  \multicolumn{1}{c|}{{ 0.5184}} &
+  \multicolumn{1}{c|}{{ 0.5154}} &
+  \multicolumn{1}{c|}{{ 0.4908}} &
+  { 0.5081} \\ \cline{2-6} 
+ &
+  \multicolumn{1}{l|}{Llama-2-7B} &
+  \multicolumn{1}{c|}{{ 0.5087}} &
+  \multicolumn{1}{c|}{{ 0.5017}} &
+  \multicolumn{1}{c|}{0.3772} &
+  { 0.5025} \\ \cline{2-6} 
+\multirow{-3}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}LLM \\ Based\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5254}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5215}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5031}}} &
+  { \textbf{0.5224}} \\ \hline
+\multicolumn{1}{|l|}{} &
+  \multicolumn{5}{c|}{\textbf{Prediction with explanation on ILDC expert}} \\ \hline
+ &
+  \multicolumn{1}{l|}{Llama-2-7B} &
+  \multicolumn{1}{c|}{{ 0.3125}} &
+  \multicolumn{1}{c|}{{ 0.4259}} &
+  \multicolumn{1}{c|}{{ 0.3236}} &
+  { 0.4259} \\ \cline{2-6} 
+\multirow{-2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}LLM \\ Based\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5750}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5741}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5728}}} &
+  { \textbf{0.5741}} \\ \hline
+\end{tabular}%
+}
+\caption{Judgement prediction results. The best results are shown in bold.}
+\label{prediction-table}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Judgement prediction and explanation results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[t]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|l|
+>{}c 
+>{}c 
+>{}c 
+>{}c 
+>{}c 
+>{}c cc|}
+\hline
+ &
+  \multicolumn{5}{c|}{\textbf{Lexical Based Evaluation}} &
+  \multicolumn{2}{c|}{\textbf{Semantic Evaluation}} &
+  \textbf{Expert Evaluation} \\ \cline{2-9} 
+\multirow{-2}{*}{\textbf{Models}} &
+  \multicolumn{1}{c|}{\textbf{Rouge-1}} &
+  \multicolumn{1}{c|}{\textbf{Rouge-2}} &
+  \multicolumn{1}{c|}{\textbf{Rouge-L}} &
+  \multicolumn{1}{c|}{\textbf{BLEU}} &
+  \multicolumn{1}{c|}{\textbf{METEOR}} &
+  \multicolumn{1}{c|}{\textbf{BERTScore}} &
+  \multicolumn{1}{c|}{\textbf{BLANC}} &
+  \textbf{Rating Score} \\ \hline
+ &
+  \multicolumn{8}{c|}{\textbf{Prediction with explanation on PredEx}} \\ \hline
+Gemini pro &
+  \multicolumn{1}{c|}{{ 0.3099}} &
+  \multicolumn{1}{c|}{{ 0.2428}} &
+  \multicolumn{1}{c|}{{ 0.2593}} &
+  \multicolumn{1}{c|}{{ 0.0826}} &
+  \multicolumn{1}{c|}{{ 0.1870}} &
+  \multicolumn{1}{c|}{{ 0.6329}} &
+  \multicolumn{1}{c|}{{ 0.1715}} &
+  2.24 \\ \hline
+Llama-2-7B &
+  \multicolumn{1}{c|}{{ 0.3211}} &
+  \multicolumn{1}{c|}{{ 0.1886}} &
+  \multicolumn{1}{c|}{{ 0.2109}} &
+  \multicolumn{1}{c|}{{ 0.0599}} &
+  \multicolumn{1}{c|}{{ 0.1760}} &
+  \multicolumn{1}{c|}{{ 0.6191}} &
+  \multicolumn{1}{c|}{{ 0.1507}} &
+  { \textbf{3.06}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular} &
+  \multicolumn{1}{c|}{{ \textbf{0.4972}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.4321}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.4399}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.2531}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.3630}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.6909}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.2844}}} &
+  { 2.84} \\ \hline
+ &
+  \multicolumn{8}{c|}{\textbf{Prediction with explanation on ILDC expert \cite{vats-etal-2023-llms, malik-etal-2021-ildc}}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}GPT 3.5 turbo\\ (Reproduced)\end{tabular} &
+  \multicolumn{1}{c|}{{ \textbf{0.5383}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.4267}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.4541}}} &
+  \multicolumn{1}{c|}{{ 0.2842}} &
+  \multicolumn{1}{c|}{{ 0.4685}} &
+  \multicolumn{1}{c|}{{ \textbf{0.7273}}} &
+  \multicolumn{1}{c|}{0.3394} &
+  3.6$^*$ \\ \hline
+Llama-2-7B &
+  \multicolumn{1}{c|}{{ 0.4526}} &
+  \multicolumn{1}{c|}{{ 0.2454}} &
+  \multicolumn{1}{c|}{{ 0.2957}} &
+  \multicolumn{1}{c|}{{ 0.1485}} &
+  \multicolumn{1}{c|}{{ 0.3440}} &
+  \multicolumn{1}{c|}{{ 0.6464}} &
+  \multicolumn{1}{c|}{{ 0.2212}} &
+  { \textbf{3.65}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular} &
+  \multicolumn{1}{c|}{{ 0.4939}} &
+  \multicolumn{1}{c|}{{ 0.3805}} &
+  \multicolumn{1}{c|}{{ 0.3969}} &
+  \multicolumn{1}{c|}{{ \textbf{0.2918}}} &
+  \multicolumn{1}{c|}{{ \textbf{0.5075}}} &
+  \multicolumn{1}{c|}{{ 0.6891}} &
+  \multicolumn{1}{c|}{{ \textbf{0.3636}}} &
+  { 3.30} \\ \hline
+\end{tabular}%
+}
+\caption{Explanation performance comparison of various model combinations for judgment prediction across different evaluation metrics, with the highest score in each metric in bold. Entries marked with $*$ denote normalized value.}
+\label{tab:explanation-table}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Judgment Prediction with Explanation}
+The results, as shown in Table \ref{tab:explanation-table}, provide valuable insights into the performance of machine-generated explanations versus expert explanations across a range of models. These assessments include lexical-based, semantic, and expert evaluations on the PredEx test data. To augment our evaluation process, we also incorporated a comparison with the instruction-tuned models on the 54 ILDC\_expert \cite{malik-etal-2021-ildc} dataset. This dataset, to our knowledge, represents the largest collection of legal expert-annotated data available for Indian cases, offering a valuable benchmark for assessing the performance of our models. This multi-faceted evaluation offers a comprehensive understanding of the models' capabilities in generating explanations.
+
+Given the expense and time required to obtain legal expert annotations, we carefully sampled 50 cases from our dataset for Likert score evaluations by legal experts. This sampling strategy was chosen to provide a representative and manageable subset of cases for in-depth expert analysis, while also considering the practical constraints associated with expert-driven evaluations.
+
+\subsection{Lexical Based Evaluation}
+In the lexical-based evaluation, the performance of LLMs in generating explanations shows that verbatim matches are not at a satisfactory level. However, it's important to note that these metrics, while valuable, do not fully encapsulate the models' proficiency in analyzing cases, predicting outcomes, and generating reasoning. Thus, we turn to Semantic Similarity-Based Evaluation and Expert Score Evaluation for a more thorough assessment.
+
+\subsection{Semantic Evaluation}
+Semantic evaluation, particularly the BERTScore, indicates better alignment of the explanations with the gold standard, suggesting a good semantic understanding in the generated explanations. The Llama-2-7B model with instruction-tuning for prediction and explanation tasks excels in semantic similarity. Nevertheless, lower scores in open-source models point to challenges in accurately generating case analysis, predictions, and reasoning. It's crucial to recognize that generative models may exhibit hallucination issues, not entirely captured by this metric, necessitating manual evaluation by legal experts for a more complete assessment.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Judgement prediction and explanation results
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{table*}[t]
+% \centering
+% \resizebox{\linewidth}{!}{%
+% \begin{tabular}{|l|
+% >{}c 
+% >{}c 
+% >{}c 
+% >{}c 
+% >{}c 
+% >{}c cc|}
+% \hline
+%  &
+%   \multicolumn{5}{c|}{\textbf{Lexical Based Evaluation}} &
+%   \multicolumn{2}{c|}{\textbf{Semantic Evaluation}} &
+%   \textbf{Expert Evaluation} \\ \cline{2-9} 
+% \multirow{-2}{*}{\textbf{Models}} &
+%   \multicolumn{1}{c|}{\textbf{Rouge-1}} &
+%   \multicolumn{1}{c|}{\textbf{Rouge-2}} &
+%   \multicolumn{1}{c|}{\textbf{Rouge-L}} &
+%   \multicolumn{1}{c|}{\textbf{BLEU}} &
+%   \multicolumn{1}{c|}{\textbf{METEOR}} &
+%   \multicolumn{1}{c|}{\textbf{BERTScore}} &
+%   \multicolumn{1}{c|}{\textbf{BLANC}} &
+%   \textbf{Rating Score} \\ \hline
+%  &
+%   \multicolumn{8}{c|}{\textbf{Prediction with explanation on PredEx}} \\ \hline
+% Gemini pro &
+%   \multicolumn{1}{c|}{{ 0.3099}} &
+%   \multicolumn{1}{c|}{{ 0.2428}} &
+%   \multicolumn{1}{c|}{{ 0.2593}} &
+%   \multicolumn{1}{c|}{{ 0.0826}} &
+%   \multicolumn{1}{c|}{{ 0.1870}} &
+%   \multicolumn{1}{c|}{{ 0.6329}} &
+%   \multicolumn{1}{c|}{{ 0.1715}} &
+%   - \\ \hline
+% Llama-2-7B &
+%   \multicolumn{1}{c|}{{ 0.3211}} &
+%   \multicolumn{1}{c|}{{ 0.1886}} &
+%   \multicolumn{1}{c|}{{ 0.2109}} &
+%   \multicolumn{1}{c|}{{ 0.0599}} &
+%   \multicolumn{1}{c|}{{ 0.1760}} &
+%   \multicolumn{1}{c|}{{ 0.6191}} &
+%   \multicolumn{1}{c|}{{ 0.1507}} &
+%   { \textbf{3.06}} \\ \hline
+% \begin{tabular}[c]{@{}l@{}}LLama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular} &
+%   \multicolumn{1}{c|}{{ \textbf{0.4972}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.4321}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.4399}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.2531}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.3630}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.6909}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.2844}}} &
+%   { 2.84} \\ \hline
+%  &
+%   \multicolumn{8}{c|}{\textbf{Prediction with explanation on ILDC expert \cite{vats-etal-2023-llms, malik-etal-2021-ildc}}} \\ \hline
+% \begin{tabular}[c]{@{}l@{}}GPT 3.5 turbo\\ (Reproduced)\end{tabular} &
+%   \multicolumn{1}{c|}{{ \textbf{0.5383}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.4267}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.4541}}} &
+%   \multicolumn{1}{c|}{{ 0.2842}} &
+%   \multicolumn{1}{c|}{{ 0.4685}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.7273}}} &
+%   \multicolumn{1}{c|}{0.3394} &
+%   - \\ \hline
+% Llama-2-7B &
+%   \multicolumn{1}{c|}{{ 0.4526}} &
+%   \multicolumn{1}{c|}{{ 0.2454}} &
+%   \multicolumn{1}{c|}{{ 0.2957}} &
+%   \multicolumn{1}{c|}{{ 0.1485}} &
+%   \multicolumn{1}{c|}{{ 0.3440}} &
+%   \multicolumn{1}{c|}{{ 0.6464}} &
+%   \multicolumn{1}{c|}{{ 0.2212}} &
+%   { \textbf{3.65}} \\ \hline
+% \begin{tabular}[c]{@{}l@{}}LLama-2-7B\\ Instruction-tuning \\ on prediction with \\ explanation task\end{tabular} &
+%   \multicolumn{1}{c|}{{ 0.4939}} &
+%   \multicolumn{1}{c|}{{ 0.3805}} &
+%   \multicolumn{1}{c|}{{ 0.3969}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.2918}}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.5075}}} &
+%   \multicolumn{1}{c|}{{ 0.6891}} &
+%   \multicolumn{1}{c|}{{ \textbf{0.3636}}} &
+%   { 3.30} \\ \hline
+% \end{tabular}%
+% }
+% \caption{Explanation performance comparison of various model combinations for judgment prediction across different evaluation metrics, with the highest score in each metric in bold.}
+% \label{tab:explanation-table}
+% \end{table*}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Expert Evaluation}
+\label{subsec:expert_evaluation}
+Evaluating generative models in the legal judgment prediction task with explanation requires domain-specific expertise. The expert evaluation, detailed in Table \ref{expert-scores}, shows that the Llama-2-7B model with instruction-tuning performs notably well, although it sometimes produces truncated or repetitive responses. Despite these limitations, the instruction-tuned model demonstrates fewer non-factual responses and better overall explanation quality compared to other pre-trained models. Interestingly, models with well-designed prompts for explanation generation displayed enhanced performance without instances of hallucination.
+
+The expert ratings, as reflected in Table \ref{expert-scores}, further underscore the efficacy of our instruction-tuned model, which even surpasses the quality of explanations provided by legal professionals (achieving a rating score of 4). This underlines the potential of generative models, particularly those leveraging our instruction-tuning approach, in generating accurate and relevant legal explanations. The average expert rating scores, presented in Table \ref{tab:explanation-table}, corroborate the superiority of our generative models over other approaches.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Legal Expert Ratings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|ccccc|}
+\hline
+ 
+ &
+  \multicolumn{5}{c|}{\textbf{Rating Score}} \\ \hline
+ 
+ &
+  \multicolumn{1}{c|}{\textbf{1}} &
+  \multicolumn{1}{c|}{\textbf{2}} &
+  \multicolumn{1}{c|}{\textbf{3}} &
+  \multicolumn{1}{c|}{\textbf{4}} &
+  \textbf{5} \\ \cline{2-6} 
+ 
+\multirow{-2}{*}{\textbf{Generative Models}} &
+  \multicolumn{5}{c|}{\textbf{PredEx}} \\ \hline
+Llama-2-7B &
+  \multicolumn{1}{c|}{{ 2}} &
+  \multicolumn{1}{c|}{{ 11}} &
+  \multicolumn{1}{c|}{{ 22}} &
+  \multicolumn{1}{c|}{{ 12}} &
+  { 3} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuned\end{tabular} &
+  \multicolumn{1}{c|}{{ 5}} &
+  \multicolumn{1}{c|}{13} &
+  \multicolumn{1}{c|}{18} &
+  \multicolumn{1}{c|}{13} &
+  1 \\ \hline
+ &
+  \multicolumn{5}{c|}{\textbf{ILDC expert}} \\ \hline
+Llama-2-7B &
+  \multicolumn{1}{c|}{0} &
+  \multicolumn{1}{c|}{9} &
+  \multicolumn{1}{c|}{22} &
+  \multicolumn{1}{c|}{21} &
+  2 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Llama-2-7B\\ Instruction-tuned\end{tabular} &
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{3} &
+  \multicolumn{1}{c|}{16} &
+  \multicolumn{1}{c|}{24} &
+  9 \\ \hline
+\end{tabular}%
+}
+\caption{Distribution of Expert Rating Scores for Generative Models on PredEx and ILDC Expert Data.}
+\label{expert-scores}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hallucination}
+\label{subsec:hallucination}
+We address the issue of hallucinations in model-generated text, a common challenge in using large language models for generating legal judgments. Hallucinations refer to instances where the model generates false or irrelevant information that is not supported by the input data. To combat this, we have implemented a fine-tuning strategy that significantly reduces these errors. A detailed comparative analysis in the Appendix \ref{sec:Hallucination-example} showcases these strategies and their effectiveness. This analysis demonstrates how fine-tuning and instruction-tuning specifically tailored to the legal domain can mitigate hallucinations, providing clearer, more accurate, and legally coherent outputs.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % hallucination_table
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{table*}[]
+% \centering
+% \resizebox{\linewidth}{!}{%
+% \begin{tabular}{|l|l|l|}
+% \hline
+% \textbf{Model} &
+%   \textbf{Decision and Reasoning} &
+%   \textbf{Explanation of error} \\ \hline
+% Ground Truth &
+%   \begin{tabular}[c]{@{}l@{}}1. By an order of assessment dated 31.01.2005, \\ the Assessing Officer restricted the eligible deduction\\ under Section 80-IA of the Income Tax Act, 1961 \\ (hereinafter the Act) to the extent of business income \\ only. On 23.03.2006, the Commissioner of Income-Tax\\  (Appeal)-I (hereinafter the Appellate Authority) partly\\  allowed the Appeal filed by the Assessee and reversed\\  the order of the Assessing Officer on..\end{tabular} &
+%   \multicolumn{1}{c|}{-} \\ \hline
+% Llama-2-7B &
+%   \begin{tabular}[c]{@{}l@{}}For the aforementioned reasons, \textcolor{red}{the Appeal is} \\ \textcolor{red}{dismissed} qua the issue of the extent of deduction \\ under \textcolor{red}{Section 80-IA of the Act.Civil Appeal No. 1327} \\ \textcolor{red}{of 2021, Civil Appeal No. 1329 of 2021, Civil} \\ \textcolor{red}{Appeal No. 2537 of 2016, Civil Appeal No. 1408 of}\\  \textcolor{red}{2021 and Civil Appeal No. 1508 of 2021} are \\ disposed of in terms of the above judgment.Civil \\ Appeal No. 1509 of 2021 is de-tagged as the \\ questions arising therein are not related.\end{tabular} &
+%   abcd reason \\ \hline
+% \begin{tabular}[c]{@{}l@{}}LLama-2-7B \\ Instruction-tuning\\ on prediction \\ with explanation\\ task\end{tabular} &
+%   \begin{tabular}[c]{@{}l@{}}The claim of the Assessee that deduction under\\  Section 80-IA \textcolor{green}{should be allowed} to the extent of \\ gross total income was rejected by the Assessing \\ Officer.As stated above, \textcolor{green}{Section 80AB} was inserted \\ in the year 1981 to get over a judgment of this Court \\ in Cloth Traders (P) Ltd. (supra). The Circular dated\\  22.09.1980 issued by the CBDT makes it clear that\\  the reason for introduction of Section 80AB of the\\  Act was for the deductions...\end{tabular} &
+%   no hallucination \\ \hline
+% \end{tabular}%
+% }
+% \caption{Demo: Comparative Analysis Responses generated by different models}
+% \label{hallucination_table}
+% \end{table*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%
+

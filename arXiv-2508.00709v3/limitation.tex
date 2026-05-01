@@ -1,0 +1,14 @@
+\section*{Limitations}
+\label{sec:limitations}
+
+While \texttt{NyayaRAG} marks a significant advance in realistic legal judgment prediction under the Indian common law framework, several limitations merit further attention.
+
+First, although Retrieval-Augmented Generation (RAG) helps reduce hallucinations by grounding outputs in retrieved legal documents, it does not fully eliminate factual or interpretive inaccuracies. In sensitive domains such as law, even rare errors in reasoning or justification may raise concerns about reliability and accountability.
+
+Second, the current framework supports binary and multi-label outcome structures but does not yet handle the full spectrum of legal verdicts, such as hierarchical or multi-class decisions involving complex legal provisions. Expanding to richer verdict taxonomies would enable broader applicability and deeper case understanding.
+
+Third, \texttt{NyayaRAG} assumes the availability of clean, well-structured legal documents and relies on summarization pipelines to manage input length. However, real-world legal texts often contain noise, OCR errors, or inconsistent formatting. Although summarization aids conciseness, it may inadvertently omit subtle legal nuances that affect judgment outcomes or explanation quality.
+
+Finally, due to computational resource constraints, the current system utilizes instruction-tuned LLMs guided by domain-specific prompts rather than fully fine-tuning on large-scale Indian legal corpora. While prompt-based tuning remains efficient and modular, fine-tuning on in-domain legal texts could further enhance model fidelity and domain alignment.
+
+Despite these limitations, \texttt{NyayaRAG} provides a robust and interpretable foundation for judgment prediction and explanation, supported by both automatic and expert evaluations. Future work that addresses these constraints, particularly hierarchical decision modeling and domain-specific fine-tuning, will further strengthen the framework’s legal relevance and practical deployment potential.

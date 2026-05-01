@@ -1,0 +1,62 @@
+\section{Results and Analysis}
+\label{sec:results_analysis}
+
+We conducted extensive evaluations across multiple pipeline configurations to study the impact of different legal information components on both judgment prediction and explanation quality. Tables~\ref{tab:prediction_pipeline_results} and~\ref{tab:explanation_pipeline_results} summarize the model's performance across these configurations for binary and multi-label settings.
+
+\subsection{Judgment Prediction Performance}
+
+As shown in Table~\ref{tab:prediction_pipeline_results}, the pipeline combining \textit{CaseText + Statutes} achieved the highest accuracy in the single-label setting. This suggests that legal statutes provide substantial contextual cues for the model to infer the likely decision. In contrast, \textit{CaseText Only} achieved 62.27\%, highlighting the importance of augmenting case narratives with applicable laws. Interestingly, the \textit{CaseText + Previous Similar Cases} pipeline showed the highest precision, recall, and F1-score in the single-label case, indicating that semantically retrieved precedents, despite not being explicitly cited, help the model align with actual judicial outcomes.
+
+In the multi-label setting, the best accuracy was observed for the \textit{CaseText + Statutes + Precedents} pipeline. This comprehensive context provides the model with structured legal knowledge, improving generalization across different outcome labels. Conversely, the \textit{Facts Only} pipeline performed worst overall, reaffirming that factual narratives alone, without legal context, are insufficient for reliably predicting legal outcomes. The poor performance of the \textit{Facts + Statutes + Precedents} pipeline in the single-label setting suggests that factual sections lack the interpretive cues that full case texts offer when combined with legal references.
+
+\subsection{Explanation Generation Quality}
+
+Table~\ref{tab:explanation_pipeline_results}presents the results of explanation evaluation using a diverse set of metrics, including both automatic lexical and semantic metrics (ROUGE, BLEU, METEOR, BERTScore, BLANC) and a large language model-based evaluation (G-Eval). Across both single and multi-label setups, the \textit{CaseText + Statutes} pipeline consistently outperformed all other configurations. In the single-label setting, it achieved the highest scores across key dimensions, substantially outperforming the \textit{CaseText Only} baseline. This result underscores the critical role of statutory references in enhancing both the factual alignment and interpretability of model-generated legal explanations.
+
+Interestingly, while the \textit{CaseText + Previous Similar Cases} pipeline yielded strong lexical overlap (e.g., top ROUGE-L in the unabridged version), it lagged behind the statute-enhanced pipeline in metrics that assess semantic and contextual alignment, such as G-Eval and BLANC. This indicates that while similar cases might help the model replicate surface-level language, they may not consistently offer legally grounded or complete reasoning. Meanwhile, the \textit{CaseText + Statutes + Precedents} pipeline also performed competitively, suggesting that combining structured legal references with precedent data can lead to balanced and high-quality explanations.
+
+In contrast, configurations that relied solely on factual narratives (\textit{CaseFacts Only} and \textit{Facts + Statutes + Precedents}) exhibited comparatively poor performance across all evaluation metrics. For example, the \textit{Facts + Statutes + Precedents} pipeline recorded a G-Eval score as low in the single-label setting. This reinforces the notion that factual descriptions, while essential, are insufficient for constructing legally persuasive rationales. The absence of structured legal arguments, statutory alignment, or precedent citation in these setups appears to undermine their explanatory effectiveness.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[t]
+\centering
+\resizebox{0.70\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Pipelines} & \textbf{Fleiss' $\kappa$} & \textbf{Cohen's $\kappa$} & \textbf{ICC} & \textbf{Kripp. $\alpha$} & \textbf{Pearson Corr.} \\
+\midrule
+\multicolumn{6}{c}{\textbf{Single Partition}} \\
+\midrule
+CaseText Only & 0.42 & 0.47 & 0.55 & 0.49 & 0.58 \\
+CaseText + Statutes & 0.51 & 0.55 & 0.61 & 0.57 & 0.65 \\
+CaseText + Precedents & 0.37 & 0.42 & 0.50 & 0.45 & 0.52 \\
+CaseText + Previous Similar Cases & 0.41 & 0.45 & 0.54 & 0.47 & 0.56 \\
+CaseText + Statutes + Precedents & 0.49 & 0.52 & 0.59 & 0.54 & 0.62 \\
+CaseFacts Only & 0.34 & 0.39 & 0.47 & 0.43 & 0.49 \\
+Facts + Statutes + Precedents & 0.29 & 0.34 & 0.42 & 0.38 & 0.44 \\
+\midrule
+\multicolumn{6}{c}{\textbf{Multi Partition}} \\
+\midrule
+CaseText Only & 0.40 & 0.45 & 0.53 & 0.48 & 0.57 \\
+CaseText + Statutes & 0.50 & 0.54 & 0.60 & 0.56 & 0.64 \\
+CaseText + Precedents & 0.36 & 0.41 & 0.49 & 0.44 & 0.51 \\
+CaseText + Previous Similar Cases & 0.39 & 0.44 & 0.52 & 0.46 & 0.55 \\
+CaseText + Statutes + Precedents & 0.47 & 0.51 & 0.58 & 0.52 & 0.60 \\
+CaseFacts Only & 0.32 & 0.37 & 0.46 & 0.41 & 0.48 \\
+Facts + Statutes + Precedents & 0.28 & 0.33 & 0.41 & 0.36 & 0.43 \\
+\bottomrule
+\end{tabular}
+}
+\vspace*{-2mm}
+\caption{Inter-Annotator Agreement (IAA) statistics for expert evaluation of generated legal explanations across different pipeline settings for both Single and Multi partitions}
+\label{tab:iaa_expert_scores}
+\end{table*}
+
+\paragraph{Expert Evaluation:}
+The results of this evaluation aligned closely with the trends observed in automatic metrics (Table~\ref{tab:explanation_pipeline_results}). Pipelines enriched with statutory provisions, particularly \textit{CaseText + Statutes}, consistently received the highest expert ratings, highlighting the value of legal grounding in improving explanation quality. In contrast, pipelines relying solely on factual input, such as \textit{CaseFacts Only}, obtained the lowest expert scores, underscoring their lack of interpretive depth.
+
+To assess the reliability of these expert judgments, we performed a detailed Inter-Annotator Agreement (IAA) analysis across multiple evaluation dimensions, Table~\ref{tab:iaa_expert_scores}. The IAA results revealed moderate to substantial agreement among annotators. For the \textit{Single} partition, pipelines such as \textit{CaseText + Statutes} and \textit{CaseText + Statutes + Precedents} achieved higher consistency (Fleiss’ $\kappa > 0.49$, ICC $\approx 0.60$), reflecting strong consensus on their explanation quality. In contrast, fact-only or noisy-input pipelines showed weaker agreement (Fleiss’ $\kappa < 0.35$, ICC $< 0.50$), suggesting greater variability in expert perception of their outputs.
+
+The {Multi} partition exhibited slightly lower agreement overall, likely due to the additional complexity of multi-label judgments. Nevertheless, richer legal context pipelines again demonstrated higher consistency among experts compared to fact-only inputs. These findings not only validate the robustness of our expert evaluation protocol but also corroborate trends from lexical, semantic, and LLM-based evaluations.
+
+Taken together, the results emphasize that Retrieval-Augmented Generation, when paired with structured legal inputs such as statutes and precedents, produces explanations that are more accurate, interpretable, and legally coherent. The combination of automatic metrics, LLM-based judgment, and human expert ratings provides a multifaceted and credible framework for assessing explanation quality in legal judgment prediction.

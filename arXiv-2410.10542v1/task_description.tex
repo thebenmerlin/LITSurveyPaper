@@ -1,0 +1,9 @@
+\section{Task Definition}
+This study focuses on Supreme Court of India (SCI) judgments, and the Court Judgment Prediction with Explanation task consists of two subtasks:
+
+\textbf{Task A: Judgment Prediction}: This subtask is framed as a binary classification problem specific to SCI cases. Given a segment of the legal judgment as input, the goal is to predict whether the decision favors or is against the appellant. The prediction is represented by binary labels: \{1, 0\}, where 1 indicates that the appeal is accepted (i.e., if any part of the appeal is accepted, the decision is considered in favor of the appellant). Although some cases might involve multiple heads of appeal, where an appellant might win on some grounds and lose on others, for the purposes of this task, the outcome is simplified to a binary decision. Cases with mixed outcomes are excluded or reduced to this binary format for prediction.
+
+\textbf{Task B: Rationale Explanation}: This subtask involves generating a coherent explanation or rationale that justifies the predicted decision, based on the provided segment of the judgment. The explanation seeks to clarify the reasoning behind the predicted outcome.
+ 
+The workflow of the system, as illustrated in Figure~\ref{fig1}, captures the entire process—from extracting facts and additional legal information (such as statutes, precedents, and lower court rulings) to feeding this data into transformer models, hierarchical transformers, and LLMs. The diagram visually represents the pipeline of both tasks, highlighting how the prediction and explanation processes interact to form a comprehensive legal judgment prediction system.
+

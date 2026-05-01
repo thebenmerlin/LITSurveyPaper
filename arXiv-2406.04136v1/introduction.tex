@@ -1,0 +1,110 @@
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%
+\begin{table*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|l|l|}
+\hline
+\textbf{Corpus} &
+  \textbf{Language} &
+  \textbf{Jurisdiction} &
+  \textbf{\# of Cases} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# of Human \\ annotated Docs\end{tabular}} &
+  \begin{tabular}[c]{@{}c@{}}\textbf{Avg \# of} \\ \textbf{Tokens}\end{tabular} &
+  \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Annotated LJP Subtasks\\ (\# of labels w.r.t Subtask)\end{tabular}}} &
+  \multicolumn{1}{c|}{\textbf{Additional Annotation}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}FCCR\\ \cite{csulea2017exploring}\end{tabular} &
+  French &
+  France &
+  126,865 &
+  0 &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Court Decision\\ (6 and 8 w.r.t. two setups)\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}date of the court ruling\\ and law area\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}CAIL\\ \cite{xiao2018cail2018}\end{tabular} &
+  Chinese &
+  China &
+  2,676,075 &
+  0 &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Law Article (183)\\ Charge (202)\\ Prison Term (integer value)\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}the defendant and\\ penalty of money\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}ECHR\\ \cite{chalkidis2019neural}\end{tabular} &
+  English &
+  Europe &
+  11,478 &
+  0 &
+  2421 &
+  \begin{tabular}[c]{@{}l@{}}Violation (2) \\ Law Article (66)\end{tabular} &
+  case importance \\ \hline
+\begin{tabular}[c]{@{}c@{}}ECHR\\ \cite{chalkidis-etal-2021-paragraph}\end{tabular} &
+  English &
+  Europe &
+  11,000 &
+  \begin{tabular}[c]{@{}c@{}}50 \\ (fact paragraphs)\end{tabular} &
+  - &
+  \begin{tabular}[c]{@{}l@{}}Alleged Law Article (40)\\ Violation (2)\\ Law Article (40)\end{tabular} &
+  paragraph-level rationale \\ \hline
+\begin{tabular}[c]{@{}c@{}}SJP\\ \cite{niklaus2021swiss}\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}German\\ French\\ Italian\end{tabular} &
+  Switzerland &
+  \begin{tabular}[c]{@{}c@{}}49,883 (German)\\ 31,094 (French)\\ 4,292 (Italian)\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}200 (German) \\ (Court Decision)\end{tabular} &
+  850 &
+  Court Decision (2) &
+  \begin{tabular}[c]{@{}l@{}}publication year\\ legal area\\ canton of origin\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}ILDC\\ \cite{malik-etal-2021-ildc}\end{tabular} &
+  English &
+  India &
+  34,816 &
+  \begin{tabular}[c]{@{}c@{}}56 (Court Decision \\ and Explanation)\end{tabular} &
+  3231 &
+  Court Decision (2) &
+  \begin{tabular}[c]{@{}c@{}}sentence-level explanation\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}c@{}}HLDC\\ \cite{kapoor-etal-2022-hldc}\end{tabular} &
+  Hindi &
+  India &
+  340,280 &
+  0 &
+  764 &
+  Bail Prediction (2) &
+  extractive summarization \\ \hline
+\begin{tabular}[c]{@{}c@{}}BCD\\ \cite{lage2022predicting}\end{tabular} &
+  Portuguese &
+  Brazil &
+  4,043 &
+  0 &
+  119 &
+  \begin{tabular}[c]{@{}l@{}}Court Decision (3)\\ decision’s unanimity status\end{tabular} &
+  unanimity label \\ \hline
+\begin{tabular}[c]{@{}c@{}}\textbf{(Our dataset)} \\ \textbf{PredEx 2024}\end{tabular} &
+  English &
+  India &
+  15,222 &
+  15,222 &
+  4,504 &
+  \begin{tabular}[c]{@{}l@{}}Court Decision (2)\\ Explanation for Decision\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}expert ratings of generated \\responses for 50 PredEx \\and 54 ILDC experts\end{tabular}  
+  
+   \\ \hline
+\end{tabular}%
+}
+\caption{Comparative Overview of Widely Used Legal Judgment Prediction Datasets. Entries marked with `-' denote unknown or unavailable information.}
+\label{tab:old-data-stat}
+\end{table*}
+
+In the evolving landscape of legal technology, the integration of Artificial Intelligence (AI) into the judicial system has emerged as a frontier of immense potential and challenge. The Indian judiciary, characterized by a significant backlog of cases\footnote{\url{https://www.nytimes.com/2024/01/13/world/asia/india-judicial-backlog.html}}, stands to benefit substantially from advancements in AI-assisted legal decision-making. This paper introduces a novel approach to facilitating the legal decision-making process, specifically focusing on the Indian context, in conjunction with explanations for the same. Our work builds upon two foundational studies: \cite{malik-etal-2021-ildc} and \cite{vats-etal-2023-llms}. Our objective is to develop an advanced system capable of predicting judicial outcomes and providing cogent explanations for these predictions. This system leverages a newly compiled dataset, \texttt{PredEx}, of approximately 15,000 annotated legal documents, considerably larger than those used in previous research, particularly in terms of its volume and depth of annotations. Table~\ref{tab:old-data-stat} compares \texttt{PredEx} with other popularly used corpora for legal judgment prediction, highlighting the uniqueness of our dataset in terms of its size and focus on providing explanations. Unlike previous works that predominantly focused on predicting legal outcomes, \texttt{PredEx} introduces the largest annotated dataset for judgment prediction and explanation in the Indian legal context, addressing a critical gap in legal AI research. This dataset enables us to train and refine sophisticated machine learning models, particularly focusing on instruction tuning, to achieve unprecedented accuracy and relevancy in legal judgment prediction.
+
+Our work is distinguished by several key contributions that mark significant advancements in the field of legal AI:
+\begin{enumerate}
+    \item Publication of a New Annotated Dataset (\texttt{PredEx}): We introduce the largest annotated dataset to date for judgment prediction and explanation in the Indian legal context. This dataset surpasses previous efforts in both scope and depth, providing a more robust foundation for training AI models in legal judgment prediction.
+    
+    \item Exploration of Instruction-Tuning on Large Language Models (LLMs): Our work goes beyond the traditional methods of fine-tuning conventional transformers. We delve into instruction tuning on LLMs, an approach not extensively explored in previous research, to enhance prediction accuracy.
+    
+    \item Expert Evaluation and Validation: We employ a rigorous evaluation process, utilizing a Likert score scale to assess the efficacy of our system. This evaluation, conducted on a sample of 50 documents, provides critical insights into the performance of our AI models compared to human expert standards.
+\end{enumerate}
+
+% Our research aims to provide a comprehensive and sophisticated AI-based system for legal judgment prediction and explanation, specifically tailored for the Indian judiciary. This system is not only a technological advancement but also a step towards addressing the pressing challenge of case backlog in India. We believe our contributions will not only enhance the efficiency and transparency of the legal process but also pave the way for further research and development in AI-assisted legal technology. For the sake of reproducibility, we have made the \texttt{PredEx} dataset and the code for our prediction and explanation models accessible via a GitHub link\footnote{\url{https://github.com/ShubhamKumarNigam/PredEx}}. 
+
+Our research aims to provide a comprehensive and sophisticated AI-based system for legal judgment prediction and explanation, specifically tailored for the Indian judiciary. This system is not only a technological advancement but also a step towards addressing the pressing challenge of case backlog in India. We believe our contributions will not only enhance the efficiency and transparency of the legal process but also pave the way for further research and development in AI-assisted legal technology. For the sake of reproducibility, we have made the \texttt{PredEx} dataset and the code for our prediction and explanation models accessible via a GitHub link\footnote{\url{https://github.com/ShubhamKumarNigam/PredEx}}. Additionally, for convenience, we have uploaded the data\footnote{\href{https://huggingface.co/collections/L-NLProc/predex-models-66509d3f4de624770d690a48}{huggingface.co/collections/L-NLProc/predex-models}} and models\footnote{\href{https://huggingface.co/collections/L-NLProc/predex-datasets-6650a75907cc2255eab18d01}{huggingface.co/collections/L-NLProc/predex-datasets}} to Huggingface.
+

@@ -1,0 +1,13 @@
+\section*{Limitations}
+
+This study is focused solely on Supreme Court of India (SCI) judgments, which may limit the generalizability of the models to other courts or jurisdictions. Legal systems in different countries, or even lower courts within the same system, may have distinct structures, procedures, and nuances that are not captured in this study.
+
+Additionally, the judgment prediction task is simplified as a binary classification problem. In real-world cases, particularly in multi-issue appeals, an appellant may win on some points and lose on others. This complexity is not fully addressed here, as our model reduces the outcome to a binary decision, which may overlook the nuances of cases with multiple heads of appeal.
+
+While we incorporate facts, statutes, precedents, and arguments to simulate a realistic scenario, this approach still does not capture the full range of judicial reasoning. Judges often rely on implicit legal reasoning, judicial discretion, and a wider array of contextual factors that may not be explicitly mentioned in legal documents, limiting the comprehensiveness of our model’s predictions.
+
+The large language models (LLMs) used in this study, such as GPT-3.5 Turbo and Llama-2, offer promising results, but their high computational requirements make them resource-intensive. This could restrict their practical application in many legal environments, especially in resource-constrained settings.
+
+Furthermore, the human evaluation metrics—\textit{Clarity} and \textit{Linking}—are based on subjective assessments from legal experts. Although we provided detailed guidelines to standardize the evaluation process, differences in interpretation among experts can introduce variability into the results.
+
+Future research will focus on addressing these limitations by exploring multi-label classification to account for more complex case outcomes, expanding the applicability of models to other legal domains and jurisdictions, and refining evaluation metrics to minimize subjectivity.

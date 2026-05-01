@@ -1,0 +1,103 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[final]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\usepackage{xcolor}
+\usepackage{xspace}
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\setlist{leftmargin=*,nosep}
+
+\newcommand{\ab}[1]{\textcolor{Magenta}{Arnab: #1}}
+\newcommand{\aniket}[1]{\textcolor{red}{Aniket: #1}}
+\newcommand{\sknigam}[1]{\textcolor{red}{Shubham: #1}}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+% \title{Instructions for *ACL Proceedings}
+\title{Rethinking Legal Judgement Prediction in a Realistic Scenario in the Era of Large Language Models}
+
+
+ \author{
+   Shubham Kumar Nigam\textsuperscript{1} \quad
+   Aniket Deroy\textsuperscript{2} \quad
+   Subhankar Maity\textsuperscript{2}  \quad
+   Arnab Bhattacharya\textsuperscript{1} \\
+   \textsuperscript{1}Indian Institute of Technology Kanpur (IIT-K) \\
+   \textsuperscript{2}Indian Institute of Technology Kharagpur (IIT-Kgp)\\
+   \texttt{\{sknigam, arnabb\}@cse.iitk.ac.in} \\
+   \texttt{\{roydanik18, subhankar.ai\}@kgpian.iitkgp.ac.in}
+}
+
+\begin{document}
+\maketitle
+
+\input{abstract}
+
+\input{intro}
+
+\input{related_work}
+
+\input{task_description}
+
+\input{dataset}
+
+\input{methodology}
+
+\input{results_and_analysis}
+
+\input{conclusion_and_future_work}
+
+\input{limitations}
+
+\input{ethics}
+
+% Bibliography entries for the entire Anthology, followed by custom entries
+%\bibliography{anthology,custom}
+% Custom bibliography entries only
+\bibliography{custom}
+
+\input{appendix}
+\end{document}

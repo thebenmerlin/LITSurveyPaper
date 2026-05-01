@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  1 APR 2026 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  7 APR 2026 10:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -474,8 +474,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-[3]) (./bundle3.tex [4] [5]) (./bundle4.tex) (./bundle5.tex [6] [7])
-(./survey_main.bbl [8])
+[3]) (./bundle3.tex [4]) (./bundle4.tex [5]) (./bundle5.tex [6]
+Underfull \hbox (badness 2012) in paragraph at lines 10--11
+\OT1/ptm/m/n/10 cap-tures argument-level struc-ture, specif-i-cally the claim-
+ []
+
+[7]) (./survey_main.bbl [8])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -504,12 +508,12 @@ Here is how much of TeX's memory you used:
  40007 multiletter control sequences out of 15000+600000
  664800 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1282b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,1290b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/lo
 cal/texlive/2026/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texli
 ve/2026/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on survey_main.pdf (9 pages, 110233 bytes).
+Output written on survey_main.pdf (9 pages, 110275 bytes).
 PDF statistics:
  307 PDF objects out of 1000 (max. 8388607)
  285 compressed objects within 3 object streams

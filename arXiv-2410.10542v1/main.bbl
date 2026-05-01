@@ -1,0 +1,179 @@
+\begin{thebibliography}{35}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Aletras et~al.(2016)Aletras, Tsarapatsanis, Preo{\c{t}}iuc-Pietro, and Lampos}]{aletras2016predicting}
+Nikolaos Aletras, Dimitrios Tsarapatsanis, Daniel Preo{\c{t}}iuc-Pietro, and Vasileios Lampos. 2016.
+\newblock Predicting judicial decisions of the european court of human rights: A natural language processing perspective.
+\newblock \emph{PeerJ computer science}, 2:e93.
+
+\bibitem[{Brown(2020)}]{brown2020language}
+Tom~B Brown. 2020.
+\newblock Language models are few-shot learners.
+\newblock \emph{arXiv preprint arXiv:2005.14165}.
+
+\bibitem[{Chalkidis et~al.(2019)Chalkidis, Androutsopoulos, and Aletras}]{chalkidis2019neural}
+Ilias Chalkidis, Ion Androutsopoulos, and Nikolaos Aletras. 2019.
+\newblock Neural legal judgment prediction in english.
+\newblock \emph{Association for Computational Linguistics (ACL)}.
+
+\bibitem[{Deroy et~al.(2024{\natexlab{a}})Deroy, Bailung, Ghosh, Ghosh, and Chakraborty}]{xx16}
+Aniket Deroy, Naksatra~Kumar Bailung, Kripabandhu Ghosh, Saptarshi Ghosh, and Abhijnan Chakraborty. 2024{\natexlab{a}}.
+\newblock Artificial intelligence (ai) in legal data mining.
+\newblock \emph{arXiv preprint arXiv:2405.14707}.
+
+\bibitem[{Deroy et~al.(2021)Deroy, Bhattacharya, Ghosh, and Ghosh}]{xx4}
+Aniket Deroy, Paheli Bhattacharya, Kripabandhu Ghosh, and Saptarshi Ghosh. 2021.
+\newblock An analytical study of algorithmic and expert summaries of legal cases.
+\newblock In \emph{Legal Knowledge and Information Systems}, pages 90--99. IOS Press.
+
+\bibitem[{Deroy et~al.(2023)Deroy, Ghosh, and Ghosh}]{xx1}
+Aniket Deroy, Kripabandhu Ghosh, and Saptarshi Ghosh. 2023.
+\newblock How ready are pre-trained abstractive models and llms for legal case judgement summarization?
+\newblock \emph{arXiv preprint arXiv:2306.01248}.
+
+\bibitem[{Deroy et~al.(2024{\natexlab{b}})Deroy, Ghosh, and Ghosh}]{xx11}
+Aniket Deroy, Kripabandhu Ghosh, and Saptarshi Ghosh. 2024{\natexlab{b}}.
+\newblock Applicability of large language models and generative models for legal case judgement summarization.
+\newblock \emph{Artificial Intelligence and Law}, pages 1--44.
+
+\bibitem[{Deroy et~al.(2024{\natexlab{c}})Deroy, Ghosh, and Ghosh}]{xx2}
+Aniket Deroy, Kripabandhu Ghosh, and Saptarshi Ghosh. 2024{\natexlab{c}}.
+\newblock Ensemble methods for improving extractive summarization of legal case judgements.
+\newblock \emph{Artificial Intelligence and Law}, 32(1):231--289.
+
+\bibitem[{Deroy and Maity(2023)}]{xx9}
+Aniket Deroy and Subhankar Maity. 2023.
+\newblock Questioning biases in case judgment summaries: Legal datasets or large language models?
+\newblock \emph{arXiv preprint arXiv:2312.00554}.
+
+\bibitem[{Devlin et~al.(2018)Devlin, Chang, Lee, and Toutanova}]{devlin2018bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2018.
+\newblock Bert: Pre-training of deep bidirectional transformers for language understanding.
+\newblock \emph{arXiv preprint arXiv:1810.04805}.
+
+\bibitem[{Farzindar(2004)}]{farzindar2004atefeh}
+Atefeh Farzindar. 2004.
+\newblock Atefeh farzindar and guy lapalme,'letsum, an automatic legal text summarizing system in t. gordon (ed.), legal knowledge and information systems. jurix 2004: The seventeenth annual conference. amsterdam: Ios press, 2004, pp. 11-18.
+\newblock In \emph{Legal knowledge and information systems: JURIX 2004, the seventeenth annual conference}, volume 120, page~11. IOS Press.
+
+\bibitem[{Feng et~al.(2021)Feng, Li, Ge, Luo, and Ng}]{feng2021recommending}
+Yi~Feng, Chuanyi Li, Jidong Ge, Bin Luo, and Vincent Ng. 2021.
+\newblock Recommending statutes: A portable method based on neural networks.
+\newblock \emph{ACM Transactions on Knowledge Discovery from Data (TKDD)}, 15(2):1--22.
+
+\bibitem[{Feng et~al.(2022)Feng, Li, and Ng}]{feng-etal-2022-legal}
+Yi~Feng, Chuanyi Li, and Vincent Ng. 2022.
+\newblock \href {https://doi.org/10.18653/v1/2022.acl-long.48} {Legal judgment prediction via event extraction with constraints}.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 648--664, Dublin, Ireland. Association for Computational Linguistics.
+
+\bibitem[{Ghosh and Wyner(2019)}]{ghosh2019identification}
+Saptarshi Ghosh and Adam Wyner. 2019.
+\newblock Identification of rhetorical roles of sentences in indian legal judgments.
+\newblock \emph{Legal Knowledge and Information Systems: JURIX}, page~3.
+
+\bibitem[{Hwang et~al.(2022)Hwang, Lee, Cho, Lee, and Seo}]{hwang2022multi}
+Wonseok Hwang, Dongjun Lee, Kyoungyeon Cho, Hanuhl Lee, and Minjoon Seo. 2022.
+\newblock A multi-task benchmark for korean legal language understanding and judgement prediction.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:32537--32551.
+
+\bibitem[{Kapoor et~al.(2022)Kapoor, Dhawan, Goel, T~H, Bhatnagar, Agrawal, Agrawal, Bhattacharya, Kumaraguru, and Modi}]{kapoor-etal-2022-hldc}
+Arnav Kapoor, Mudit Dhawan, Anmol Goel, Arjun T~H, Akshala Bhatnagar, Vibhu Agrawal, Amul Agrawal, Arnab Bhattacharya, Ponnurangam Kumaraguru, and Ashutosh Modi. 2022.
+\newblock \href {https://doi.org/10.18653/v1/2022.findings-acl.278} {{HLDC}: {H}indi legal documents corpus}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: ACL 2022}, pages 3521--3536, Dublin, Ireland. Association for Computational Linguistics.
+
+\bibitem[{Liu(2019)}]{liu2019fine}
+Yang Liu. 2019.
+\newblock Fine-tune bert for extractive summarization.
+\newblock \emph{arXiv preprint arXiv:1903.10318}.
+
+\bibitem[{Malik et~al.(2022)Malik, Sanjay, Guha, Hazarika, Nigam, Bhattacharya, and Modi}]{malik-etal-2022-semantic}
+Vijit Malik, Rishabh Sanjay, Shouvik~Kumar Guha, Angshuman Hazarika, Shubham~Kumar Nigam, Arnab Bhattacharya, and Ashutosh Modi. 2022.
+\newblock \href {https://doi.org/10.18653/v1/2022.nllp-1.13} {Semantic segmentation of legal documents via rhetorical roles}.
+\newblock In \emph{Proceedings of the Natural Legal Language Processing Workshop 2022}, pages 153--171, Abu Dhabi, United Arab Emirates (Hybrid). Association for Computational Linguistics.
+
+\bibitem[{Malik et~al.(2021)Malik, Sanjay, Nigam, Ghosh, Guha, Bhattacharya, and Modi}]{malik-etal-2021-ildc}
+Vijit Malik, Rishabh Sanjay, Shubham~Kumar Nigam, Kripabandhu Ghosh, Shouvik~Kumar Guha, Arnab Bhattacharya, and Ashutosh Modi. 2021.
+\newblock \href {https://doi.org/10.18653/v1/2021.acl-long.313} {{ILDC} for {CJPE}: {I}ndian legal documents corpus for court judgment prediction and explanation}.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)}, pages 4046--4062, Online. Association for Computational Linguistics.
+
+\bibitem[{Masala et~al.(2021)Masala, Iacob, Uban, Cidota, Velicu, Rebedea, and Popescu}]{masala2021jurbert}
+Mihai Masala, Radu Cristian~Alexandru Iacob, Ana~Sabina Uban, Marina Cidota, Horia Velicu, Traian Rebedea, and Marius Popescu. 2021.
+\newblock jurbert: A romanian bert model for legal judgement prediction.
+\newblock In \emph{Proceedings of the Natural Legal Language Processing Workshop 2021}, pages 86--94.
+
+\bibitem[{Nallapati et~al.(2017)Nallapati, Zhai, and Zhou}]{nallapati2017summarunner}
+Ramesh Nallapati, Feifei Zhai, and Bowen Zhou. 2017.
+\newblock Summarunner: A recurrent neural network based sequence model for extractive summarization of documents.
+\newblock In \emph{Proceedings of the AAAI conference on artificial intelligence}, volume~31.
+
+\bibitem[{Nigam et~al.(2024)Nigam, Sharma, Khanna, Shallum, Ghosh, and Bhattacharya}]{nigam-etal-2024-legal}
+Shubham Nigam, Anurag Sharma, Danush Khanna, Noel Shallum, Kripabandhu Ghosh, and Arnab Bhattacharya. 2024.
+\newblock \href {https://aclanthology.org/2024.findings-acl.255} {Legal judgment reimagined: {P}red{E}x and the rise of intelligent {AI} interpretation in {I}ndian courts}.
+\newblock In \emph{Findings of the Association for Computational Linguistics ACL 2024}, pages 4296--4315, Bangkok, Thailand and virtual meeting. Association for Computational Linguistics.
+
+\bibitem[{Nigam and Deroy(2023)}]{xx12}
+Shubham~Kumar Nigam and Aniket Deroy. 2023.
+\newblock Fact-based court judgment prediction.
+\newblock In \emph{Proceedings of the 15th Annual Meeting of the Forum for Information Retrieval Evaluation}, pages 78--82.
+
+\bibitem[{Nigam et~al.(2023{\natexlab{a}})Nigam, Deroy, Shallum, Mishra, Roy, Mishra, Bhattacharya, Ghosh, and Ghosh}]{xx10}
+Shubham~Kumar Nigam, Aniket Deroy, Noel Shallum, Ayush~Kumar Mishra, Anup Roy, Shubham~Kumar Mishra, Arnab Bhattacharya, Saptarshi Ghosh, and Kripabandhu Ghosh. 2023{\natexlab{a}}.
+\newblock Nonet at semeval-2023 task 6: Methodologies for legal evaluation.
+\newblock \emph{arXiv preprint arXiv:2310.11049}.
+
+\bibitem[{Nigam et~al.(2022)Nigam, Goel, and Bhattacharya}]{nigam2022nigam}
+Shubham~Kumar Nigam, Navansh Goel, and Arnab Bhattacharya. 2022.
+\newblock nigam@ coliee-22: Legal case retrieval and entailment using cascading of lexical and semantic-based models.
+\newblock In \emph{JSAI International Symposium on Artificial Intelligence}, pages 96--108. Springer.
+
+\bibitem[{Nigam et~al.(2023{\natexlab{b}})Nigam, Mishra, Mishra, Shallum, and Bhattacharya}]{nigam2023legal}
+Shubham~Kumar Nigam, Shubham~Kumar Mishra, Ayush~Kumar Mishra, Noel Shallum, and Arnab Bhattacharya. 2023{\natexlab{b}}.
+\newblock Legal question-answering in the indian context: Efficacy, challenges, and potential of modern ai models.
+\newblock \emph{arXiv preprint arXiv:2309.14735}.
+
+\bibitem[{Niklaus et~al.(2021)Niklaus, Chalkidis, and St{\"u}rmer}]{niklaus2021swiss}
+Joel Niklaus, Ilias Chalkidis, and Matthias St{\"u}rmer. 2021.
+\newblock Swiss-judgment-prediction: A multilingual legal judgment prediction benchmark.
+\newblock \emph{arXiv preprint arXiv:2110.00806}.
+
+\bibitem[{Paul et~al.(2022)Paul, Mandal, Goyal, and Ghosh}]{paul2022pre}
+Shounak Paul, Arpan Mandal, Pawan Goyal, and Saptarshi Ghosh. 2022.
+\newblock Pre-training transformers on indian legal text.
+\newblock \emph{arXiv preprint arXiv:2209.06049}.
+
+\bibitem[{Polsley et~al.(2016)Polsley, Jhunjhunwala, and Huang}]{polsley2016casesummarizer}
+Seth Polsley, Pooja Jhunjhunwala, and Ruihong Huang. 2016.
+\newblock Casesummarizer: a system for automated summarization of legal texts.
+\newblock In \emph{Proceedings of COLING 2016, the 26th international conference on Computational Linguistics: System Demonstrations}, pages 258--262.
+
+\bibitem[{Touvron et~al.(2023)Touvron, Martin, Stone, Albert, Almahairi, Babaei, Bashlykov, Batra, Bhargava, Bhosale et~al.}]{touvron2023llama}
+Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et~al. 2023.
+\newblock Llama 2: Open foundation and fine-tuned chat models.
+\newblock \emph{arXiv preprint arXiv:2307.09288}.
+
+\bibitem[{Vats et~al.(2023)Vats, Zope, De, Sharma, Bhattacharya, Nigam, Guha, Rudra, and Ghosh}]{vats2023llms}
+Shaurya Vats, Atharva Zope, Somsubhra De, Anurag Sharma, Upal Bhattacharya, Shubham Nigam, Shouvik Guha, Koustav Rudra, and Kripabandhu Ghosh. 2023.
+\newblock Llms--the good, the bad or the indispensable?: A use case on legal statute prediction and legal judgment prediction on indian court cases.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}, pages 12451--12474.
+
+\bibitem[{Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou et~al.}]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed~Chi, Quoc~V Le, Denny Zhou, et~al. 2022.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 35:24824--24837.
+
+\bibitem[{Xiao et~al.(2018)Xiao, Zhong, Guo, Tu, Liu, Sun, Feng, Han, Hu, Wang et~al.}]{xiao2018cail2018}
+Chaojun Xiao, Haoxi Zhong, Zhipeng Guo, Cunchao Tu, Zhiyuan Liu, Maosong Sun, Yansong Feng, Xianpei Han, Zhen Hu, Heng Wang, et~al. 2018.
+\newblock Cail2018: A large-scale legal dataset for judgment prediction.
+\newblock \emph{arXiv preprint arXiv:1807.02478}.
+
+\bibitem[{Yang et~al.(2019)Yang, Dai, Yang, Carbonell, Salakhutdinov, and Le}]{yang2019xlnet}
+Zhilin Yang, Zihang Dai, Yiming Yang, Jaime Carbonell, Russ~R Salakhutdinov, and Quoc~V Le. 2019.
+\newblock Xlnet: Generalized autoregressive pretraining for language understanding.
+\newblock \emph{Advances in neural information processing systems}, 32.
+
+\bibitem[{Zhao et~al.(2018)Zhao, Zhou, Li, Wang, and Chang}]{zhao-etal-2018-learning}
+Jieyu Zhao, Yichao Zhou, Zeyu Li, Wei Wang, and Kai-Wei Chang. 2018.
+\newblock \href {https://doi.org/10.18653/v1/D18-1521} {Learning gender-neutral word embeddings}.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing}, pages 4847--4853, Brussels, Belgium. Association for Computational Linguistics.
+
+\end{thebibliography}

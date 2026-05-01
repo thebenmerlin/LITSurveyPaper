@@ -1,0 +1,156 @@
+\section{Evaluation of Model Performance}
+% This section presents the results of both automatic and human evaluations of legal judgment prediction using various models on the ILDC-multi dataset.
+% 
+\subsection{Automatic Evaluation}
+Table~\ref{tab:binary-classification-llm} summarizes the performance of judgment predictions made by different LLMs through prompting. The results demonstrate that relying solely on factual information leads to lower performance scores. However, incorporating additional legal case-specific information, such as statutes, precedents, rulings from lower courts, and arguments, significantly enhances the quality of predictions. Among the evaluated models, GPT-3.5 Turbo demonstrates the best overall performance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllllll}
+% \hline
+\toprule
+\textbf{Metric} & \textbf{V1} & \textbf{V2} & \textbf{V3} & \textbf{V4} & \textbf{V1+CoT} 
+& \textbf{V4+CoT}    %(%)}\\ \hline
+\\ %\hline
+\midrule
+
+\multicolumn{7}{c}{\textbf{Llama-2-13b}}
+\\ %\hline
+\midrule
+Precision  & 0.6443 & 0.6839 & 0.6941 & 0.6997 & 0.6821 & \textbf{0.7221} \\ %\hline
+
+
+Recall  & 0.6292 & 0.6246 & 0.6228 & 0.6416 & 0.6319 & \textbf{0.6824}   \\ %\hline
+
+F1-score & 0.6365 & 0.6528 & 0.6445 & 0.6693 & 0.6560 & \textbf{0.7016}     \\ %\hline
+\midrule
+\multicolumn{7}{c}{\textbf{Llama-2-70b}}
+\\ %\hline
+\midrule
+Precision  & 0.7011 & 0.7344 & 0.7416 & \textbf{0.7518} & 0.7322 & 0.7416 \\ %\hline
+
+
+Recall  & 0.6644 & 0.6851 & 0.7147 & 0.6952 & 0.6817 & \textbf{0.7234}   \\ %\hline
+
+
+F1-score  & 0.6822 & 0.7088 & 0.7278 & 0.7223 & 0.7059 & \textbf{0.7323}   \\ %\hline
+\midrule
+\multicolumn{7}{c}{\textbf{GPT-3.5 Turbo}} 
+\\ %\hline
+\midrule
+Precision  & 0.7016 & 0.7014 & 0.7411 & 0.7609 & 0.7261 & \textbf{0.7687} \\ %\hline
+
+Recall  & 0.6894 & 0.6914 & 0.6949 & \textbf{0.7155} & 0.6847 & 0.7132   \\ %\hline
+
+F1-score  & 0.6953 & 0.6962 & 0.7172 & 0.7374 & 0.7047 & \textbf{0.7398}   \\ %\hline
+\bottomrule
+\end{tabular}
+}
+\caption{Performance Metrics for the Judgment Prediction Task on the ILDC-multi dataset using different LLMs across various input configurations (V1, V2, V3, V4, V1+CoT, V4+CoT), utilizing both normal prompting and CoT prompting. Bold values indicate the highest score for each metric and model.}
+\label{tab:binary-classification-llm}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[t]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llllll}
+%\hline
+\toprule
+\textbf{Metric} & \textbf{HT} & \textbf{CS} & \textbf{SR} & \textbf{BS} & \textbf{LS}  
+\\ %\hline
+\midrule
+
+\multicolumn{6}{c}{\textbf{XLNET-large}}
+\\ %\hline
+\midrule
+Precision  & 0.6424 & 0.6313 & \textbf{0.6478} & 0.6227 & 0.5778 \\ %\hline
+
+Recall  & \textbf{0.6036} & 0.5713 & 0.5472 & 0.5683 & 0.5602 \\ %\hline
+
+F1-score & \textbf{0.6223} & 0.5998 & 0.5993 & 0.5942 & 0.5689   \\ %\hline
+\midrule
+\multicolumn{6}{c}{\textbf{InlegalBERT}} %\multicolumn{3}{|c|}
+\\ %\hline
+\midrule
+
+Precision  & 0.6534 & 0.6415 & 0.6338 & \textbf{0.6604} & 0.6010 \\ %\hline
+Recall  & \textbf{0.6202} & 0.5673 & 0.5613 & 0.5885 & 0.5532    \\ %\hline
+
+F1-score & \textbf{0.6363} & 0.6022 & 0.5954 & 0.6223 & 0.5761     \\ %\hline
+\midrule
+\multicolumn{6}{c}{\textbf{BERT}} %\multicolumn{3}{|c|}
+\\ %\hline
+\midrule
+Precision  & \textbf{0.6039} & 0.5557 & 0.5589 & 0.5592 & 0.5475 \\ %\hline
+Recall  & \textbf{0.5838} & 0.5540 & 0.5589 & 0.5589 & 0.5457   \\ %\hline
+
+F1-score  & \textbf{0.5936} & 0.5548 & 0.5589 & 0.5590 & 0.5466    \\ 
+\bottomrule
+
+\end{tabular}
+}
+\caption{Comparative Performance of Transformer Models on the Judgment Prediction Task on the ILDC-multi Dataset. These models are with fact summarization techniques such as CaseSummarizer (CS), SummaRuNNer (SR), BertSum (BS), and LetSum (LS), as well as Hierarchical Transformer (HT) models using the complete facts. Bold values indicate the highest score for each metric and model.}
+\label{tab:comparative-metrics-transformer}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table \ref{tab:comparative-metrics-transformer} provides further insights into the performance of various hierarchical transformer models and other transformer architectures. The results show that hierarchical transformer models outperform traditional summarization methods. Notably, models specifically pre-trained on Indian legal data, such as InlegalBERT, exhibit superior performance compared to those trained on generic datasets like BERT. The results indicate that LLMs have yet to reach the performance level of legal experts, who demonstrate a 94\% agreement rate, as noted by ~\cite{malik-etal-2021-ildc}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Expert Evaluation}
+For the expert evaluation, we selected 25 explanations generated by the GPT-3.5 Turbo model, corresponding to different judgments, and enlisted three legal experts to assess these outputs. Each expert rated the explanations on a scale of 1 to 5 based on two criteria: (i) Clarity, the quality and coherence of the rationale behind the legal judgment, and (ii) Linking, the degree to which the explanation is logically connected to the final outcome of the judgment.
+
+To ensure consistency and reliability in the evaluation, the experts were provided with clear guidelines. They were first instructed to familiarize themselves with both the legal judgments and the model-generated outputs to ensure informed assessments. For each explanation, they evaluated:
+
+\textbf{Clarity:} This criterion focuses on how well the rationale is presented. A clear explanation should have a logical flow, use appropriate terminology, and be easily understood by both legal professionals and laypeople. The experts were asked to consider whether the explanation was coherent and if the reasoning behind the judgment was easy to follow.
+
+\textbf{Linking:} This metric captures how well the explanation ties back to the final outcome. A strong linking score indicates that the rationale clearly leads to the conclusion of the judgment, without any gaps or inconsistencies. The experts were tasked with identifying whether the explanation logically and explicitly supports the final decision. The evaluators used the following rating scales:
+\begin{itemize}
+    \item \textbf{For Clarity:}\\
+        \textbf{[1]:} Very Poor (Unclear rationale)\\
+        \textbf{[2]:} Poor (Some clarity but weak rationale)\\
+        \textbf{[3]:} Fair (Moderately clear rationale)\\
+        \textbf{[4]:} Good (Clear rationale)\\
+        \textbf{[5]:} Excellent (Very clear rationale)\\
+
+    \item \textbf{For Linking:}\\
+        \textbf{[1]:}Very Poor (Unclear and disconnected explanation)\\
+        \textbf{[2]:}Poor (Weak linkage between explanation and judgment)\\
+        \textbf{[3]:}Fair (Moderate linking, some gaps)\\
+        \textbf{[4]:} Good (Clear linkage to the judgment)\\
+        \textbf{[5]:}Excellent (Strong and coherent linking)\\
+\end{itemize}
+
+These ratings, calculated as the average scores for each criterion across the three experts, are presented in Table~\ref{tab:human_evaluation_gpt}. To ensure objectivity and ethical standards, the experts were instructed to maintain impartiality and avoid conflicts of interest throughout the evaluation process.
+
+The results indicate that Variation 4 with chain-of-thought prompting (V4+CoT) achieved the highest scores for both clarity and linking, demonstrating its effectiveness in producing coherent and well-connected explanations. The average Fleiss' Kappa scores for Clarity and Linking were 0.64 and 0.70, respectively, indicating substantial agreement among the evaluators.
+
+The combination of automatic and human evaluations offers a comprehensive assessment of the models' performance, revealing areas for improvement and confirming the efficacy of specific prompting techniques—such as chain-of-thought (CoT) in enhancing the quality of legal judgment prediction and explanation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[t]
+% \tiny
+\centering
+\resizebox{\columnwidth}{!}{%
+%\begin{tabular}{|l|l|l|l|l|l|l|}
+\begin{tabular}{l rrrrrr}
+\toprule
+\textbf{Metric} & \textbf{V1} & \textbf{V2} & \textbf{V3} & \textbf{V4} & \textbf{V1+ CoT} & \textbf{V4+ CoT}
+\\ 
+\midrule
+\bf Clarity  & 3.13 & 3.20 & 3.33 & 3.47 & 3.20 & \textbf{3.73} \\
+
+\bf Linking  & 3.66 & 3.80 & 3.87 & 4.00 & 3.73 & \textbf{4.27}   \\
+\bottomrule
+\end{tabular}
+}
+\caption{Expert Evaluation Results for the Explanation Task Using GPT-3.5 Turbo. Bold values indicate the highest scores for each metric.}
+\label{tab:human_evaluation_gpt}
+\end{table}
+
