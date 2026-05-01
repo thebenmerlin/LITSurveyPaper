@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  7 APR 2026 10:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.9)  2 MAY 2026 05:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -466,20 +466,30 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr
-/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}
-
-
-]) (./bundle2.tex
+)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2]
-[3]) (./bundle3.tex [4]) (./bundle4.tex [5]) (./bundle5.tex [6]
-Underfull \hbox (badness 2012) in paragraph at lines 10--11
-\OT1/ptm/m/n/10 cap-tures argument-level struc-ture, specif-i-cally the claim-
+ [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
+local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]) (./bundle2.tex [2]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+0.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [3] [4])
+(./bundle3.tex [5]
+Underfull \hbox (badness 1655) in paragraph at lines 28--29
+[]\OT1/ptm/m/n/10 Second, the avail-able data is heav-ily Supreme Court
  []
 
-[7]) (./survey_main.bbl [8])
+) (./bundle4.tex [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7])
+(./bundle5.tex [8]) (./survey_main.bbl [9])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -491,7 +501,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[9
+[10
 
 ] (./survey_main.aux)
  ***********
@@ -502,21 +512,22 @@ Package rerunfilecheck Info: File `survey_main.out' has not changed.
 (rerunfilecheck)             Checksum: B9BA87C6E42D5EA15C3810A75D9314F5;6439.
  ) 
 Here is how much of TeX's memory you used:
- 11305 strings out of 467525
- 175044 string characters out of 5418983
- 615904 words of memory out of 5000000
- 40007 multiletter control sequences out of 15000+600000
- 664800 words of font info for 107 fonts, out of 8000000 for 9000
+ 11344 strings out of 467525
+ 175612 string characters out of 5418983
+ 617906 words of memory out of 5000000
+ 40040 multiletter control sequences out of 15000+600000
+ 665315 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1290b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/lo
-cal/texlive/2026/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texli
-ve/2026/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/te
-xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on survey_main.pdf (9 pages, 110275 bytes).
+ 75i,10n,79p,1613b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/
+local/texlive/2026/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texl
+ive/2026/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2026/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026/texmf-dist
+/fonts/type1/urw/times/utmri8a.pfb>
+Output written on survey_main.pdf (10 pages, 131624 bytes).
 PDF statistics:
- 307 PDF objects out of 1000 (max. 8388607)
- 285 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 318 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
